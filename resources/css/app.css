@@ -1,0 +1,201 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+            'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-display: 'Manrope', sans-serif;
+    --font-serif-modern: 'Playfair Display', serif;
+
+    --color-primary: #f87201;
+    --color-primary-rich: #DAA520;
+    --color-primary-deep: #B8860B;
+    --color-corporate-orange: #F97200;
+    --color-gold-light: #FFEFBA;
+    --color-gold-deep: #8e6d13;
+    --color-background-light: #f8f7f5;
+    --color-background-dark: #0a0a0a;
+
+    --radius: 0.25rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─── Gold gradient text ─── */
+.gold-gradient-text {
+    background: linear-gradient(135deg, #ffd700 0%, #f87201 30%, #c86e06 80%, #f87201 90%, #ffd700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+}
+.gold-gradient-text::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 44px;
+    height: 44px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.95) 0%, rgba(255,242,58,.7) 28%, rgba(255,255,255,.15) 45%, rgba(255,255,255,0) 60%);
+    filter: blur(6px);
+    opacity: .9;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    z-index: 6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Gold solid gradients ─── */
+.gold-solid-gradient {
+    background: linear-gradient(135deg, #ffefba 0%, #ffd700 35%, #daa520 65%, #b8860b 100%);
+}
+.gold-solid-gradient-orange {
+    background: linear-gradient(135deg, #ffd700 0%, #f19a0e 50%, #f97200 100%);
+}
+
+/* ─── Gold icon gradient ─── */
+.gold-gradient-icon {
+    background: linear-gradient(135deg, #ffefba 0%, #ffd700 30%, #f87201 70%, #b8860b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+/* ─── Gold outline text ─── */
+.gold-outline-text {
+    color: transparent !important;
+    -webkit-text-stroke: 1.5px rgba(255,215,0,.65) !important;
+    text-shadow: 0 0 15px rgba(255,215,0,.2) !important;
+}
+
+/* ─── Gradient border button ─── */
+.gradient-border-btn {
+    position: relative;
+    background: transparent;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+}
+.gradient-border-btn::after {
+    position: absolute; top: -1px; bottom: -1px; left: -1px; right: -1px;
+    background: linear-gradient(135deg, #ffefba 0%, #ffd700 30%, #daa520 70%, #b8860b 100%);
+    content: ""; z-index: -1; border-radius: inherit;
+}
+
+/* ─── Opposite gradient border ─── */
+.gradient-border-opposite {
+    position: relative;
+    background: transparent;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+.gradient-border-opposite::after {
+    position: absolute; top: -2px; bottom: -2px; left: -2px; right: -2px;
+    background: linear-gradient(315deg, #ffefba 0%, #ffd700 20%, #daa520 50%, #b8860b 80%, #f97200 100%);
+    content: ""; z-index: -1; border-radius: inherit;
+}
+
+/* ─── Bevel effect ─── */
+.bevel-effect {
+    box-shadow: inset 0 2px 0 rgba(255,255,255,.18), inset 0 -6px 12px rgba(0,0,0,.25), 0 8px 20px rgba(0,0,0,.18);
+}
+
+/* ─── Button drop shadow ─── */
+.btn-drop-shadow {
+    box-shadow: 0 10px 30px rgba(0,0,0,.45), 0 4px 10px rgba(0,0,0,.25);
+}
+.btn-drop-shadow:hover {
+    box-shadow: 0 14px 40px rgba(0,0,0,.5), 0 6px 14px rgba(0,0,0,.28);
+}
+
+/* ─── Thin gold border ─── */
+.thin-gold-border {
+    position: relative;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+}
+.thin-gold-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, #ffd700 0%, #f97200 10%, #ffefba 30%, #f19a0e 70%, #b8860b 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* ─── Section separator ─── */
+.section-separator {
+    position: relative;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, #ff6a00 0%, #ffefba 6%, #b86b00 18%, #ffd700 36%, #ff9f1c 52%, #ff6a00 68%, #b86b00 72%, #ffefba 78%, #ff6a00 84%, #ffefba 86%, #ff6a00 90%, #b86b00 96%, #ffefba 100%);
+    box-shadow: 0 10px 30px rgba(255,140,0,.14), 0 0 42px rgba(255,200,0,.1) inset;
+    overflow: visible;
+}
+
+/* ─── Project filter ─── */
+.project-filter {
+    filter: sepia(.4) saturate(1.2) brightness(.6) hue-rotate(-10deg);
+    transition: all .5s cubic-bezier(.4,0,.2,1);
+}
+.group:hover .project-filter {
+    filter: sepia(0) saturate(1) brightness(1.1) hue-rotate(0deg);
+}
+
+/* ─── Hero glow text ─── */
+.hero-glow-text { text-shadow: none; transition: text-shadow 200ms ease; }
+.dark .hero-glow-text { text-shadow: 0 0 30px rgba(249,114,0,.45), 0 0 8px rgba(255,255,255,0); }
+
+/* ─── Text shadow utilities ─── */
+.text-shadow-dark  { text-shadow: 0 10px 30px rgba(0,0,0,.65) !important; }
+.text-shadow-light { text-shadow: 0 6px 18px rgba(0,0,0,.28) !important; }
+.text-glow-light   { text-shadow: 0 6px 28px rgba(247,111,0,.22) !important; }
+
+/* ─── Hero image overlay ─── */
+.hero-image-overlay {
+    position: absolute; inset: 0; z-index: 5; pointer-events: none;
+    background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,.35) 60%, rgba(0,0,0,.72) 100%);
+}
+
+/* ─── CTA start project ─── */
+
+.cta-start-project:hover {
+    filter: brightness(1.1) saturate(1.05);
+    box-shadow:
+        inset 0 2px 0 rgba(255,255,255,.18),
+        inset 0 -6px 12px rgba(0,0,0,.25),
+        0 8px 20px rgba(0,0,0,.18),
+        0 14px 40px rgba(249,114,0,.2),
+        0 6px 18px rgba(255,215,0,.1);
+}
+
+/* ─── Glow bright ─── */
+.glow-bright { transition: filter 220ms ease, box-shadow 220ms ease, transform 220ms ease; }
+.glow-bright:hover {
+    filter: brightness(1.14) saturate(1.06);
+    box-shadow: 0 18px 50px rgba(249,114,0,.22), 0 8px 28px rgba(255,215,0,.1);
+}
+
+/* ─── Button hover glow ─── */
+.btn-hover-glow { transition: transform 180ms ease, filter 180ms ease, box-shadow 220ms ease; }
+.btn-hover-glow:hover { transform: none !important; filter: brightness(1.04) saturate(1.03); }
+.btn-hover-glow.thin-gold-border::before {
+    transition: opacity 300ms ease, filter 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+    opacity: .9; filter: blur(2px);
+}
+.btn-hover-glow:hover.thin-gold-border::before {
+    opacity: 1; filter: blur(8px);
+    box-shadow: 0 18px 48px rgba(249,114,0,.18), 0 8px 28px rgba(255,215,0,.08);
+    transform: scale(1.02);
+}
+.btn-hover-glow.btn-drop-shadow:hover {
+    box-shadow: 0 20px 60px rgba(249,114,0,.2), 0 10px 32px rgba(255,215,0,.1);
+}
