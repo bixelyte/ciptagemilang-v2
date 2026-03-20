@@ -12,6 +12,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -30,12 +32,21 @@ class ServiceResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema->components([
-            Section::make()->schema([
-                TextInput::make('title')->required()->maxLength(255),
+            Tabs::make('Translations')->tabs([
+                Tab::make('🇮🇩 Indonesian')->schema([
+                    TextInput::make('title.id')->label('Title (ID)')->required()->maxLength(255),
+                    Textarea::make('short_description.id')->label('Short Description (ID)')->required()->rows(3),
+                    RichEditor::make('description.id')->label('Description (ID)')->columnSpanFull(),
+                ])->columns(2),
+                Tab::make('🇬🇧 English')->schema([
+                    TextInput::make('title.en')->label('Title (EN)')->required()->maxLength(255),
+                    Textarea::make('short_description.en')->label('Short Description (EN)')->required()->rows(3),
+                    RichEditor::make('description.en')->label('Description (EN)')->columnSpanFull(),
+                ])->columns(2),
+            ])->columnSpanFull(),
+            Section::make('Settings')->schema([
                 TextInput::make('slug')->maxLength(255)->unique(ignoreRecord: true),
                 TextInput::make('icon')->default('engineering')->maxLength(255)->helperText('Google Material Symbols icon name'),
-                Textarea::make('short_description')->required()->rows(3),
-                RichEditor::make('description')->columnSpanFull(),
                 FileUpload::make('image')->image()->directory('services'),
                 TextInput::make('sort_order')->numeric()->default(0),
                 Toggle::make('is_active')->default(true),

@@ -158,11 +158,11 @@
     <div class="mx-auto max-w-[1440px]">
       <div class="mb-20 flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-end">
         <div class="max-w-2xl relative">
-          <h2 class="text-4xl font-black uppercase tracking-tighter lg:text-7xl gold-gradient-text hero-glow-text text-glow-light inline-block">OUR SERVICES</h2>
+          <h2 class="text-4xl font-black uppercase tracking-tighter lg:text-7xl gold-gradient-text hero-glow-text text-glow-light inline-block">{{ __('OUR SERVICES') }}</h2>
         </div>
         <div class="relative">
           <p class="max-w-md font-light text-white/60 text-sm pl-8 border-l border-primary">
-            Specialized solutions in Civil works, Mechanical-Electrical (ME), HVAC systems, and high-end Procurement for luxury commercial environments.
+            {{ __('Specialized solutions in Civil works, Mechanical-Electrical (ME), HVAC systems, and high-end Procurement for luxury commercial environments.') }}
           </p>
         </div>
       </div>
@@ -179,7 +179,7 @@
       </div>
       <div class="mt-16 flex justify-center">
         <a href="{{ route('services') }}" class="flex h-10 md:h-14 items-center justify-center thin-gold-border bg-background-dark btn-drop-shadow px-4 text-xs md:px-10 md:text-sm font-bold uppercase tracking-wider text-primary transition-all rounded-lg glow-bright">
-          View All Services
+          {{ __('View All Services') }}
         </a>
       </div>
     </div>
@@ -189,8 +189,8 @@
   <section class="relative px-6 py-20 lg:px-20" id="projects">
     <div class="mx-auto max-w-[1440px]">
       <div class="mb-20 flex flex-col items-center text-center">
-        <h2 class="text-4xl lg:text-7xl font-black uppercase tracking-tighter gold-gradient-text hero-glow-text text-glow-light inline-block">FEATURED PROJECTS</h2>
-        <p class="mt-6 text-xs font-bold uppercase tracking-[0.5em] text-white/40">PORTFOLIO OF EXCELLENCE</p>
+        <h2 class="text-4xl lg:text-7xl font-black uppercase tracking-tighter gold-gradient-text hero-glow-text text-glow-light inline-block">{{ __('FEATURED PROJECTS') }}</h2>
+        <p class="mt-6 text-xs font-bold uppercase tracking-[0.5em] text-white/40">{{ __('PORTFOLIO OF EXCELLENCE') }}</p>
       </div>
       <div class="grid grid-cols-1 gap-x-12 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
         @foreach ($projects as $project)
@@ -217,7 +217,7 @@
       </div>
       <div class="mt-24 flex justify-center">
         <a href="{{ route('projects') }}" class="flex h-10 md:h-14 items-center justify-center thin-gold-border bg-background-dark btn-drop-shadow px-4 text-xs md:px-10 md:text-sm font-bold uppercase tracking-wider text-primary transition-all rounded-lg glow-bright">
-          Browse All Projects
+          {{ __('Browse All Projects') }}
         </a>
       </div>
     </div>
@@ -237,8 +237,8 @@
   <section class="relative px-6 py-24 lg:px-20" id="clients">
     <div class="mx-auto max-w-[1440px]">
       <div class="mb-16 text-center">
-        <h2 class="text-4xl font-black uppercase tracking-tighter lg:text-6xl gold-gradient-text hero-glow-text text-glow-light inline-block">OUR CLIENTS</h2>
-        <p class="mt-4 text-[10px] font-bold uppercase tracking-[0.5em] text-white/40">PARTNERING WITH INDUSTRY LEADERS</p>
+        <h2 class="text-4xl font-black uppercase tracking-tighter lg:text-6xl gold-gradient-text hero-glow-text text-glow-light inline-block">{{ __('OUR CLIENTS') }}</h2>
+        <p class="mt-4 text-[10px] font-bold uppercase tracking-[0.5em] text-white/40">{{ __('PARTNERING WITH INDUSTRY LEADERS') }}</p>
       </div>
 
       <div x-data="{

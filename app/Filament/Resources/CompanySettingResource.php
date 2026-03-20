@@ -9,6 +9,8 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -29,8 +31,15 @@ class CompanySettingResource extends Resource
         return $schema->components([
             Section::make()->schema([
                 TextInput::make('key')->required()->maxLength(255)->unique(ignoreRecord: true),
-                Textarea::make('value')->rows(4)->columnSpanFull(),
-            ])->columns(2),
+            ]),
+            Tabs::make('Translations')->tabs([
+                Tab::make('🇮🇩 Indonesian')->schema([
+                    Textarea::make('value.id')->label('Value (ID)')->rows(4)->columnSpanFull(),
+                ]),
+                Tab::make('🇬🇧 English')->schema([
+                    Textarea::make('value.en')->label('Value (EN)')->rows(4)->columnSpanFull(),
+                ]),
+            ])->columnSpanFull(),
         ]);
     }
 

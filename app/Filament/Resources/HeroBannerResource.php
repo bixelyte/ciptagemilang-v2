@@ -11,6 +11,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -29,17 +31,27 @@ class HeroBannerResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema->components([
-            Section::make('Banner Content')->schema([
-                TextInput::make('title')->required()->maxLength(255),
-                TextInput::make('highlight_text')->maxLength(255),
-                Textarea::make('description')->rows(3),
-                TextInput::make('badge_text')->maxLength(255),
+            Tabs::make('Translations')->tabs([
+                Tab::make('🇮🇩 Indonesian')->schema([
+                    TextInput::make('title.id')->label('Title (ID)')->required()->maxLength(255),
+                    TextInput::make('highlight_text.id')->label('Highlight Text (ID)')->maxLength(255),
+                    Textarea::make('description.id')->label('Description (ID)')->rows(3),
+                    TextInput::make('badge_text.id')->label('Badge Text (ID)')->maxLength(255),
+                    TextInput::make('cta_primary_text.id')->label('CTA Primary Text (ID)')->maxLength(255),
+                    TextInput::make('cta_secondary_text.id')->label('CTA Secondary Text (ID)')->maxLength(255),
+                ])->columns(2),
+                Tab::make('🇬🇧 English')->schema([
+                    TextInput::make('title.en')->label('Title (EN)')->required()->maxLength(255),
+                    TextInput::make('highlight_text.en')->label('Highlight Text (EN)')->maxLength(255),
+                    Textarea::make('description.en')->label('Description (EN)')->rows(3),
+                    TextInput::make('badge_text.en')->label('Badge Text (EN)')->maxLength(255),
+                    TextInput::make('cta_primary_text.en')->label('CTA Primary Text (EN)')->maxLength(255),
+                    TextInput::make('cta_secondary_text.en')->label('CTA Secondary Text (EN)')->maxLength(255),
+                ])->columns(2),
+            ])->columnSpanFull(),
+            Section::make('Media & URLs')->schema([
                 FileUpload::make('image')->image()->directory('banners')->required(),
-            ])->columns(2),
-            Section::make('Call to Action')->schema([
-                TextInput::make('cta_primary_text')->maxLength(255),
                 TextInput::make('cta_primary_url')->maxLength(255),
-                TextInput::make('cta_secondary_text')->maxLength(255),
                 TextInput::make('cta_secondary_url')->maxLength(255),
             ])->columns(2),
             Section::make('Settings')->schema([

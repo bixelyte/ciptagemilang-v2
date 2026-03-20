@@ -9,6 +9,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -27,10 +29,17 @@ class CompanyStatResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema->components([
-            Section::make()->schema([
+            Tabs::make('Translations')->tabs([
+                Tab::make('🇮🇩 Indonesian')->schema([
+                    TextInput::make('label.id')->label('Label (ID)')->required()->maxLength(255),
+                ])->columns(2),
+                Tab::make('🇬🇧 English')->schema([
+                    TextInput::make('label.en')->label('Label (EN)')->required()->maxLength(255),
+                ])->columns(2),
+            ])->columnSpanFull(),
+            Section::make('Settings')->schema([
                 TextInput::make('icon')->required()->helperText('Google Material Symbols name'),
                 TextInput::make('value')->required()->maxLength(255),
-                TextInput::make('label')->required()->maxLength(255),
                 TextInput::make('sort_order')->numeric()->default(0),
                 Toggle::make('is_active')->default(true),
             ])->columns(2),

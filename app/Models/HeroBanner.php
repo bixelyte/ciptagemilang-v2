@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class HeroBanner extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations;
+
+    public array $translatable = ['title', 'highlight_text', 'description', 'badge_text', 'cta_primary_text', 'cta_secondary_text'];
 
     protected $fillable = [
         'title', 'highlight_text', 'description', 'image',

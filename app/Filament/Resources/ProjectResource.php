@@ -13,6 +13,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -31,13 +33,23 @@ class ProjectResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema->components([
-            Section::make()->schema([
-                TextInput::make('title')->required()->maxLength(255),
+            Tabs::make('Translations')->tabs([
+                Tab::make('🇮🇩 Indonesian')->schema([
+                    TextInput::make('title.id')->label('Title (ID)')->required()->maxLength(255),
+                    TextInput::make('location.id')->label('Location (ID)')->required()->maxLength(255),
+                    Textarea::make('scope.id')->label('Scope (ID)')->required()->rows(2),
+                    RichEditor::make('description.id')->label('Description (ID)')->columnSpanFull(),
+                ])->columns(2),
+                Tab::make('🇬🇧 English')->schema([
+                    TextInput::make('title.en')->label('Title (EN)')->required()->maxLength(255),
+                    TextInput::make('location.en')->label('Location (EN)')->required()->maxLength(255),
+                    Textarea::make('scope.en')->label('Scope (EN)')->required()->rows(2),
+                    RichEditor::make('description.en')->label('Description (EN)')->columnSpanFull(),
+                ])->columns(2),
+            ])->columnSpanFull(),
+            Section::make('Settings')->schema([
                 TextInput::make('slug')->maxLength(255)->unique(ignoreRecord: true),
-                TextInput::make('location')->required()->maxLength(255),
                 TextInput::make('year')->required()->maxLength(4),
-                Textarea::make('scope')->required()->rows(2),
-                RichEditor::make('description')->columnSpanFull(),
                 Select::make('client_id')->relationship('client', 'name')->searchable()->preload(),
                 FileUpload::make('image')->image()->directory('projects'),
                 Toggle::make('is_featured')->default(false),

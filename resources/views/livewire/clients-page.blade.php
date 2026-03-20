@@ -3,10 +3,10 @@
   <section class="relative px-6 pt-40 pb-24 lg:px-20 overflow-hidden">
     <div class="mx-auto max-w-[1440px]">
       <div class="mb-12 flex flex-col items-center text-center">
-        <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[0.4em] text-primary bg-background-dark/60 px-3 py-1.5 rounded-sm">Partnering with Industry Leaders</span>
-        <h1 class="mt-4 text-5xl lg:text-7xl font-black uppercase tracking-tighter gold-gradient-text hero-glow-text text-glow-light inline-block">OUR CLIENTS</h1>
+        <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[0.4em] text-primary bg-background-dark/60 px-3 py-1.5 rounded-sm">{{ __('PARTNERING WITH INDUSTRY LEADERS') }}</span>
+        <h1 class="mt-4 text-5xl lg:text-7xl font-black uppercase tracking-tighter gold-gradient-text hero-glow-text text-glow-light inline-block">{{ __('OUR CLIENTS') }}</h1>
         <p class="mt-6 max-w-lg text-white/50 text-sm">
-          We are proud to work with some of the most recognized brands in Indonesia, delivering exceptional engineering and construction solutions.
+          {{ __('We are proud to work with some of the most recognized brands in Indonesia, delivering exceptional engineering and construction solutions.') }}
         </p>
       </div>
     </div>
@@ -36,7 +36,7 @@
             </p>
             @if ($client->website)
               <a href="{{ $client->website }}" target="_blank" class="mt-4 inline-flex items-center gap-1 text-xs text-primary/60 hover:text-primary transition-colors">
-                <span class="material-symbols-outlined text-sm">open_in_new</span> Visit Website
+                <span class="material-symbols-outlined text-sm">open_in_new</span> {{ __('Visit Website') }}
               </a>
             @endif
           </div>

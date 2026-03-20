@@ -3,9 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class CompanySetting extends Model
 {
+    use HasTranslations;
+
+    public array $translatable = ['value'];
+
     protected $fillable = ['key', 'value'];
 
     public static function get(string $key, mixed $default = null): mixed

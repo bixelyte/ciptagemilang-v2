@@ -27,17 +27,17 @@
         </div>
       </div>
       <div>
-        <h4 class="mb-8 text-sm font-bold uppercase tracking-[0.3em] text-primary">Quick Links</h4>
+        <h4 class="mb-8 text-sm font-bold uppercase tracking-[0.3em] text-primary">{{ __('Quick Links') }}</h4>
         <ul class="flex flex-col gap-5 text-sm font-medium text-white/50">
-          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="/"><span class="size-1 rounded-full bg-white/20"></span> Home</a></li>
-          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ route('services') }}"><span class="size-1 rounded-full bg-white/20"></span> Services</a></li>
-          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ route('projects') }}"><span class="size-1 rounded-full bg-white/20"></span> Projects</a></li>
-          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ route('about') }}"><span class="size-1 rounded-full bg-white/20"></span> About Us</a></li>
-          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ route('contact') }}"><span class="size-1 rounded-full bg-white/20"></span> Contact</a></li>
+          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ route('home') }}"><span class="size-1 rounded-full bg-white/20"></span> {{ __('Home') }}</a></li>
+          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ route('services') }}"><span class="size-1 rounded-full bg-white/20"></span> {{ __('Services') }}</a></li>
+          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ route('projects') }}"><span class="size-1 rounded-full bg-white/20"></span> {{ __('Projects') }}</a></li>
+          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ route('about') }}"><span class="size-1 rounded-full bg-white/20"></span> {{ __('About Us') }}</a></li>
+          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ route('contact') }}"><span class="size-1 rounded-full bg-white/20"></span> {{ __('Contact') }}</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="mb-8 text-sm font-bold uppercase tracking-[0.3em] text-primary">Contact</h4>
+        <h4 class="mb-8 text-sm font-bold uppercase tracking-[0.3em] text-primary">{{ __('Contact') }}</h4>
         <ul class="flex flex-col gap-6 text-sm font-medium text-white/50">
           <li class="flex items-start gap-4">
             <span class="material-symbols-outlined text-primary text-xl">location_on</span>
@@ -52,11 +52,11 @@
     </div>
     <div class="mt-24 flex flex-col items-center justify-between gap-8 border-t border-white/5 pt-12 lg:flex-row">
       <p class="text-[11px] uppercase tracking-[0.2em] text-white/20">
-        &copy; {{ date('Y') }} {{ $companyName }}. All rights reserved.
+        &copy; {{ date('Y') }} {{ $companyName }}. {{ __('All rights reserved.') }}
       </p>
       <div class="flex gap-10 text-[11px] uppercase tracking-[0.2em] text-white/20">
-        <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
-        <a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+        <a class="hover:text-primary transition-colors" href="#">{{ __('Privacy Policy') }}</a>
+        <a class="hover:text-primary transition-colors" href="#">{{ __('Terms of Service') }}</a>
       </div>
     </div>
   </div>
