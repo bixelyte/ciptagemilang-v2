@@ -1,17 +1,30 @@
 <div>
   {{-- Hero --}}
-  <section class="relative px-6 pt-40 pb-24 lg:px-20 overflow-hidden">
-    <div class="mx-auto max-w-[1440px]">
-      <div class="mb-20 flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-end">
-        <div class="max-w-2xl relative">
-          <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[0.4em] text-primary bg-background-dark/60 px-3 py-1.5 rounded-sm">{{ __('What We Do') }}</span>
-          <h1 class="mt-4 text-5xl font-black uppercase tracking-tighter lg:text-7xl gold-gradient-text hero-glow-text text-glow-light inline-block">{{ __('OUR SERVICES') }}</h1>
-        </div>
-        <div class="relative">
-          <p class="max-w-md font-light text-white/60 text-sm pl-8 border-l border-primary">
-            {{ __('Specialized solutions in Civil works, Mechanical-Electrical (ME), HVAC systems, and high-end Procurement for luxury commercial environments.') }}
-          </p>
-        </div>
+  <section class="relative px-6 pt-40 pb-24 lg:px-20 overflow-hidden min-h-[50vh] flex items-center bg-fixed bg-center bg-cover bg-no-repeat" style="background-image: url('{{ asset('storage/backgrounds/bg_services.png') }}');">
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-background-dark/80 backdrop-blur-[2px]"></div>
+    
+    <div class="relative z-10 mx-auto w-full max-w-[1440px]">
+      <div class="flex flex-col items-center text-center">
+        <span class="mb-4 inline-block text-xs font-bold uppercase tracking-[0.4em] text-primary bg-background-dark/80 px-4 py-2 rounded-sm border border-primary/20 backdrop-blur-md">
+          {{ __('What We Do') }}
+        </span>
+        <h1 class="mt-2 text-5xl lg:text-7xl font-black uppercase tracking-tighter gold-gradient-text hero-glow-text text-glow-light inline-block">
+          {{ __('OUR SERVICES') }}
+        </h1>
+        <p class="mt-6 max-w-2xl text-white/80 text-base md:text-lg font-light leading-relaxed">
+          {{ __('Specialized solutions in Civil works, Mechanical-Electrical (ME), HVAC systems, and high-end Procurement for luxury commercial environments.') }}
+        </p>
+
+        <!-- Breadcrumbs -->
+        <nav class="mt-10 flex items-center justify-center space-x-2 text-sm font-medium text-white/50 backdrop-blur-md bg-background-dark/50 px-6 py-3 rounded-full border border-white/10">
+          <a href="{{ route('home') }}" class="hover:text-primary transition-colors flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">home</span>
+            {{ __('Home') }}
+          </a>
+          <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+          <span class="text-white">{{ __('Services') }}</span>
+        </nav>
       </div>
     </div>
   </section>
