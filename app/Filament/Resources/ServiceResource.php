@@ -70,6 +70,13 @@ class ServiceResource extends Resource
             ->bulkActions([BulkActionGroup::make([DeleteBulkAction::make()])]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            \App\Filament\RelationManagers\AttachmentsRelationManager::class,
+        ];
+    }
+
     public static function getPages(): array
     {
         return [

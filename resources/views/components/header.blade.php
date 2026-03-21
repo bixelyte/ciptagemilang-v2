@@ -39,11 +39,11 @@
           <span class="material-symbols-outlined text-sm transition-transform" :class="open ? 'rotate-180' : ''">expand_more</span>
         </button>
         <div x-show="open" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute right-0 mt-2 w-40 rounded-lg border border-white/10 bg-background-dark/95 backdrop-blur-md shadow-xl overflow-hidden z-50">
-          <a href="{{ route(Route::currentRouteName() ?: 'home', ['locale' => 'id']) }}" class="flex items-center gap-3 px-4 py-3 text-sm transition-all {{ $currentLocale === 'id' ? 'text-primary bg-primary/[0.08]' : 'text-white/70 hover:text-white hover:bg-white/[0.05]' }}">
+          <a href="{{ route(Route::currentRouteName() ?: 'home', array_merge(request()->route() ? request()->route()->parameters() : [], ['locale' => 'id'])) }}" class="flex items-center gap-3 px-4 py-3 text-sm transition-all {{ $currentLocale === 'id' ? 'text-primary bg-primary/[0.08]' : 'text-white/70 hover:text-white hover:bg-white/[0.05]' }}">
             <span class="text-base">🇮🇩</span>
             {{ __('Indonesian') }}
           </a>
-          <a href="{{ route(Route::currentRouteName() ?: 'home', ['locale' => 'en']) }}" class="flex items-center gap-3 px-4 py-3 text-sm transition-all {{ $currentLocale === 'en' ? 'text-primary bg-primary/[0.08]' : 'text-white/70 hover:text-white hover:bg-white/[0.05]' }}">
+          <a href="{{ route(Route::currentRouteName() ?: 'home', array_merge(request()->route() ? request()->route()->parameters() : [], ['locale' => 'en'])) }}" class="flex items-center gap-3 px-4 py-3 text-sm transition-all {{ $currentLocale === 'en' ? 'text-primary bg-primary/[0.08]' : 'text-white/70 hover:text-white hover:bg-white/[0.05]' }}">
             <span class="text-base">🇬🇧</span>
             {{ __('English') }}
           </a>
@@ -97,10 +97,10 @@
     </a>
     {{-- Mobile Language Switcher --}}
     <div class="mt-4 flex gap-2">
-      <a href="{{ route(Route::currentRouteName() ?: 'home', ['locale' => 'id']) }}" class="flex-1 flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-xs font-bold uppercase tracking-widest transition-all {{ $currentLocale === 'id' ? 'text-primary border border-primary/40 bg-primary/[0.08]' : 'text-white/50 border border-white/10 hover:text-white hover:border-white/30' }}">
+      <a href="{{ route(Route::currentRouteName() ?: 'home', array_merge(request()->route() ? request()->route()->parameters() : [], ['locale' => 'id'])) }}" class="flex-1 flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-xs font-bold uppercase tracking-widest transition-all {{ $currentLocale === 'id' ? 'text-primary border border-primary/40 bg-primary/[0.08]' : 'text-white/50 border border-white/10 hover:text-white hover:border-white/30' }}">
         🇮🇩 ID
       </a>
-      <a href="{{ route(Route::currentRouteName() ?: 'home', ['locale' => 'en']) }}" class="flex-1 flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-xs font-bold uppercase tracking-widest transition-all {{ $currentLocale === 'en' ? 'text-primary border border-primary/40 bg-primary/[0.08]' : 'text-white/50 border border-white/10 hover:text-white hover:border-white/30' }}">
+      <a href="{{ route(Route::currentRouteName() ?: 'home', array_merge(request()->route() ? request()->route()->parameters() : [], ['locale' => 'en'])) }}" class="flex-1 flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-xs font-bold uppercase tracking-widest transition-all {{ $currentLocale === 'en' ? 'text-primary border border-primary/40 bg-primary/[0.08]' : 'text-white/50 border border-white/10 hover:text-white hover:border-white/30' }}">
         🇬🇧 EN
       </a>
     </div>

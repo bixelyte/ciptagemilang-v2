@@ -36,18 +36,14 @@
     <div class="mx-auto max-w-[1440px]">
       <div class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
         @foreach ($services as $service)
-          <div class="group relative overflow-hidden rounded-xl bg-transparent p-10 transition-all thin-gold-border hover:bg-white/[0.04]">
-            <div class="mb-8">
+          <a href="{{ route('service.detail', $service->slug) }}" class="group relative overflow-hidden rounded-xl bg-transparent p-10 transition-all thin-gold-border hover:bg-white/[0.04]">
+            <div class="mb-8 flex items-center justify-between">
               <span class="material-symbols-outlined text-4xl gold-gradient-icon">{{ $service->icon }}</span>
+              <span class="material-symbols-outlined text-white/20 group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300">arrow_forward</span>
             </div>
             <h3 class="mb-4 text-xl font-bold text-white group-hover:text-primary transition-colors">{{ $service->title }}</h3>
             <p class="text-sm font-light leading-relaxed text-white/50">{{ $service->short_description }}</p>
-            @if ($service->description)
-              <div class="mt-6 text-sm text-white/40 leading-relaxed prose prose-invert prose-sm max-w-none">
-                {!! $service->description !!}
-              </div>
-            @endif
-          </div>
+          </a>
         @endforeach
       </div>
     </div>

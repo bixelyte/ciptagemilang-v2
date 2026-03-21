@@ -38,4 +38,9 @@ class Project extends Model
     public function scopeActive($q) { return $q->where('is_active', true); }
     public function scopeFeatured($q) { return $q->where('is_featured', true); }
     public function scopeOrdered($q) { return $q->orderBy('sort_order'); }
+
+    public function attachments()
+    {
+        return $this->morphMany(Attachment::class, 'attachable')->orderBy('sort_order');
+    }
 }

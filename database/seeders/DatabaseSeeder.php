@@ -99,18 +99,98 @@ class DatabaseSeeder extends Seeder
             CompanyStat::create($stat + ['is_active' => true]);
         }
 
+        // Attachments
+        \App\Models\Attachment::truncate();
+
         // Services
         Service::truncate();
         $services = [
-            ['title' => ['id' => 'Desain Engineering', 'en' => 'Engineering Design'], 'icon' => 'engineering', 'short_description' => ['id' => 'Perencanaan teknis lanjutan dan blueprint untuk infrastruktur komersial dan industri.', 'en' => 'Advanced technical planning and blueprints for commercial and industrial infrastructures.'], 'sort_order' => 1],
-            ['title' => ['id' => 'Sistem Elektrikal', 'en' => 'Electrical Systems'], 'icon' => 'bolt', 'short_description' => ['id' => 'Instalasi elektrikal komprehensif, termasuk video tron dan distribusi daya khusus.', 'en' => 'Comprehensive electrical installations, including specialized video tron and power distribution.'], 'sort_order' => 2],
-            ['title' => ['id' => 'Sistem HVAC', 'en' => 'HVAC Systems'], 'icon' => 'ac_unit', 'short_description' => ['id' => 'Solusi ventilasi mekanik dan AC efisiensi tinggi untuk ruang komersial.', 'en' => 'High-efficiency mechanical ventilation and air conditioning solutions for commercial spaces.'], 'sort_order' => 3],
-            ['title' => ['id' => 'Interior & Eksterior Sipil', 'en' => 'Civil Interior & Exterior'], 'icon' => 'foundation', 'short_description' => ['id' => 'Renovasi struktural dan finishing untuk interior dan fasad komersial kelas atas.', 'en' => 'Structural renovations and finishing for high-end commercial interiors and facades.'], 'sort_order' => 4],
-            ['title' => ['id' => 'Layanan Mekanikal', 'en' => 'Mechanical Services'], 'icon' => 'settings_suggest', 'short_description' => ['id' => 'Pekerjaan mekanikal umum dan pemeliharaan sistem industri khusus.', 'en' => 'General mechanical works and specialized industrial systems maintenance.'], 'sort_order' => 5],
-            ['title' => ['id' => 'Pengadaan', 'en' => 'Procurement'], 'icon' => 'shopping_cart', 'short_description' => ['id' => 'Pengadaan strategis material industri dan peralatan teknis untuk proyek skala besar.', 'en' => 'Strategic sourcing of industrial materials and technical equipment for large scale projects.'], 'sort_order' => 6],
+            [
+                'title' => ['id' => 'Desain Engineering', 'en' => 'Engineering Design'], 
+                'icon' => 'engineering', 
+                'short_description' => ['id' => 'Perencanaan teknis lanjutan dan blueprint untuk infrastruktur komersial dan industri.', 'en' => 'Advanced technical planning and blueprints for commercial and industrial infrastructures.'], 
+                'description' => [
+                    'en' => "Our Engineering Design service provides the blueprint for success. We combine decades of technical expertise with state-of-the-art modeling software to deliver precision-engineered solutions. Our comprehensive design process covers every aspect of commercial and industrial infrastructure, ensuring structural integrity, regulatory compliance, and optimal spatial efficiency. <br><br><strong>Key Deliverables:</strong><ul><li>Detailed Architectural and Structural Blueprints</li><li>3D Spatial Modeling and BIM Integration</li><li>Feasibility and Structural Integrity Analysis</li><li>Load Calculations and Material Specification</li></ul>",
+                    'id' => "Layanan Desain Engineering kami menyediakan cetak biru untuk kesuksesan. Kami memadukan puluhan tahun pengalaman teknis dengan perangkat lunak pemodelan mutakhir untuk memberikan solusi komprehensif. Proses desain kami mencakup setiap aspek infrastruktur komersial dan industri, memastikan integritas struktural, kepatuhan regulasi, dan efisiensi ruang yang optimal. <br><br><strong>Hasil Utama:</strong><ul><li>Cetak Biru Arsitektur dan Struktural Terperinci</li><li>Pemodelan Ruang 3D dan Integrasi BIM</li><li>Analisis Kelayakan dan Integritas Struktural</li><li>Perhitungan Beban dan Spesifikasi Material</li></ul>"
+                ],
+                'sort_order' => 1
+            ],
+            [
+                'title' => ['id' => 'Sistem Elektrikal', 'en' => 'Electrical Systems'], 
+                'icon' => 'bolt', 
+                'short_description' => ['id' => 'Instalasi elektrikal komprehensif, termasuk video tron dan distribusi daya khusus.', 'en' => 'Comprehensive electrical installations, including specialized video tron and power distribution.'], 
+                'description' => [
+                    'en' => "We deliver comprehensive and scalable electrical installations tailored for high-demand commercial environments. From initial grid planning to final fixture installation, our certified electricians ensure maximum safety, reliability, and energy efficiency. We specialize in intricate power distribution networks, intelligent lighting solutions, and large-scale video tron integrations. <br><br><strong>Our Expertise:</strong><ul><li>High and Low Voltage Power Distribution</li><li>Custom Video Tron and Digital Signage Installation</li><li>Smart Lighting and Automation Systems</li><li>Emergency Backup and Generator Integration</li></ul>",
+                    'id' => "Kami memberikan instalasi elektrikal yang komprehensif dan terukur, disesuaikan untuk lingkungan komersial bernilai tinggi. Mulai dari perencanaan jaringan awal hingga instalasi akhir, teknisi bersertifikat kami memastikan keamanan, keandalan, dan efisiensi energi yang optimal. Kami berspesialisasi dalam jaringan distribusi daya yang rumit, solusi pencahayaan cerdas, dan integrasi video tron skala besar. <br><br><strong>Keahlian Kami:</strong><ul><li>Distribusi Daya Tegangan Tinggi dan Rendah</li><li>Instalasi Video Tron dan Papan Reklame Digital Khusus</li><li>Sistem Pencahayaan Pintar dan Otomatisasi</li><li>Cadangan Darurat dan Integrasi Generator</li></ul>"
+                ],
+                'sort_order' => 2
+            ],
+            [
+                'title' => ['id' => 'Sistem HVAC', 'en' => 'HVAC Systems'], 
+                'icon' => 'ac_unit', 
+                'short_description' => ['id' => 'Solusi ventilasi mekanik dan AC efisiensi tinggi untuk ruang komersial.', 'en' => 'High-efficiency mechanical ventilation and air conditioning solutions for commercial spaces.'], 
+                'description' => [
+                    'en' => "Our HVAC solutions guarantee superior indoor air quality and precise climate control for complex structural environments. We design, install, and maintain high-efficiency mechanical ventilation and air conditioning systems that strictly adhere to international environmental standards. Our focus is on maximizing energy efficiency while minimizing operational noise and maintenance overhead. <br><br><strong>System Capabilities:</strong><ul><li>Centralized Chiller and VRV/VRF Installations</li><li>Precision Exhaust and Mechanical Ventilation</li><li>Cleanroom and Specialized Air Filtration</li><li>Automated Climate Monitoring and Control</li></ul>",
+                    'id' => "Solusi HVAC kami menjamin sirkulasi udara dalam ruangan yang dikontrol dengan presisi untuk lingkungan struktural yang kompleks. Kami merancang, memasang, dan memelihara sistem ventilasi mekanik dan pendingin udara berefisiensi tinggi yang secara ketat mematuhi standar lingkungan internasional. Fokus kami adalah memaksimalkan efisiensi energi sambil meminimalkan kebisingan operasional dan biaya pemeliharaan. <br><br><strong>Kemampuan Sistem:</strong><ul><li>Instalasi Chiller Terpusat dan VRV/VRF</li><li>Pembuangan Presisi dan Ventilasi Mekanik</li><li>Ruang Bersih dan Penyaringan Udara Khusus</li><li>Pemantauan dan Kontrol Iklim Otomatis</li></ul>"
+                ],
+                'sort_order' => 3
+            ],
+            [
+                'title' => ['id' => 'Interior & Eksterior Sipil', 'en' => 'Civil Interior & Exterior'], 
+                'icon' => 'foundation', 
+                'short_description' => ['id' => 'Renovasi struktural dan finishing untuk interior dan fasad komersial kelas atas.', 'en' => 'Structural renovations and finishing for high-end commercial interiors and facades.'], 
+                'description' => [
+                    'en' => "Transforming concepts into tangible landmarks, our Civil Interior & Exterior services handle high-end commercial renovations with unmatched craftsmanship. We execute complex structural modifications, premium facade installations, and luxury interior finishing. Our team manages the entire lifecycle of the build, guaranteeing premium execution and exact adherence to architectural directives. <br><br><strong>Construction Prowess:</strong><ul><li>Luxury Commercial Interior Fit-Outs</li><li>Modern Facade Glass and ACP Installations</li><li>Structural Reinforcement and Modification</li><li>Premium Custom Millwork and Flooring</li></ul>",
+                    'id' => "Mengubah konsep bangunan abstrak menjadi nyata, layanan Interior & Eksterior Sipil kami menangani renovasi komersial kelas atas dengan pengerjaan yang tak tertandingi. Kami melaksanakan modifikasi struktural yang kompleks, pemasangan fasad premium, dan penyelesaian interior mewah. Tim kami mengelola seluruh siklus pembangunan, menjamin eksekusi premium dan kepatuhan yang tepat terhadap arahan arsitektur. <br><br><strong>Keunggulan Konstruksi:</strong><ul><li>Fit-Out Interior Komersial Mewah</li><li>Pemasangan Kaca Fasad dan ACP Modern</li><li>Penguatan dan Modifikasi Struktural</li><li>Pembuatan Profil, Kusen, dan Lantai Khusus Premium</li></ul>"
+                ],
+                'sort_order' => 4
+            ],
+            [
+                'title' => ['id' => 'Layanan Mekanikal', 'en' => 'Mechanical Services'], 
+                'icon' => 'settings_suggest', 
+                'short_description' => ['id' => 'Pekerjaan mekanikal umum dan pemeliharaan sistem industri khusus.', 'en' => 'General mechanical works and specialized industrial systems maintenance.'], 
+                'description' => [
+                    'en' => "Our Mechanical Services division is dedicated to the robust lifecycle management of intricate industrial and commercial machinery. We provide holistic mechanical interventions, encompassing routine proactive maintenance, emergency physical repairs, and complete system overhauls. We ensure your core operational mechanisms function seamlessly around the clock. <br><br><strong>Mechanical Offerings:</strong><ul><li>Heavy Machinery Installation and Calibration</li><li>Preventative Plumbing and Piping Maintenance</li><li>Industrial Conveyor and Esculator Servicing</li><li>Fire Protection and Sprinkler Systems</li></ul>",
+                    'id' => "Divisi Layanan Mekanikal kami berdedikasi pada manajemen siklus hidup yang kuat dari mesin industri dan komersial yang rumit. Kami menyediakan intervensi mekanis holistik, mencakup pemeliharaan proaktif rutin, perbaikan fisik darurat, dan perbaikan sistem secara keseluruhan. Kami memastikan mekanisme operasional utama Anda berfungsi dengan mulus sepanjang waktu. <br><br><strong>Penawaran Mekanikal:</strong><ul><li>Pemasangan dan Kalibrasi Mesin Berat</li><li>Pemeliharaan Plambing dan Perpipaan Preventif</li><li>Servis Konveyor Industri dan Eskalator</li><li>Sistem Perlindungan Kebakaran dan Penyiram Air</li></ul>"
+                ],
+                'sort_order' => 5
+            ],
+            [
+                'title' => ['id' => 'Pengadaan', 'en' => 'Procurement'], 
+                'icon' => 'shopping_cart', 
+                'short_description' => ['id' => 'Pengadaan strategis material industri dan peralatan teknis untuk proyek skala besar.', 'en' => 'Strategic sourcing of industrial materials and technical equipment for large scale projects.'], 
+                'description' => [
+                    'en' => "Streamline your supply chain with our elite Procurement services. Specializing in the strategic sourcing of high-grade industrial materials and specialized technical equipment, we mitigate logistical bottlenecks for large-scale developments. Our extensive global network of certified vendors ensures you receive the highest quality components at optimal cost-efficiencies, delivered rigorously on schedule. <br><br><strong>Procurement Advantages:</strong><ul><li>Global Sourcing of Specialized Technical Components</li><li>Rigorous Vendor Vetting and Quality Assurance</li><li>Logistics Management and Just-In-Time Delivery</li><li>Bulk Material Cost Negotiation and Auditing</li></ul>",
+                    'id' => "Rampingkan rantai pasokan Anda dengan layanan Pengadaan elit kami. Mengkhususkan diri dalam pencarian strategis material industri bermutu tinggi dan peralatan teknis khusus, kami memitigasi hambatan logistik untuk pengembangan skala besar. Jaringan vendor bersertifikat global kami yang luas memastikan Anda menerima komponen kualitas tertinggi dengan efisiensi biaya yang optimal, dikirim dengan jadwal yang sangat ketat. <br><br><strong>Keuntungan Pengadaan:</strong><ul><li>Pengadaan Global Komponen Teknis Khusus</li><li>Pemeriksaan Vendor yang Ketat dan Penjaminan Mutu</li><li>Manajemen Logistik dan Pengiriman Tepat Waktu</li><li>Negosiasi Biaya Material Massal dan Audit</li></ul>"
+                ],
+                'sort_order' => 6
+            ],
         ];
-        foreach ($services as $service) {
-            Service::create($service + ['is_active' => true]);
+        foreach ($services as $serviceData) {
+            $service = Service::create($serviceData + ['is_active' => true]);
+
+            // Attach 3 random images
+            $images = collect(range(1, 10))->random(3);
+            $order = 1;
+            foreach ($images as $imgId) {
+                $service->attachments()->create([
+                    'title' => 'Galeri ' . $order,
+                    'file_path' => "attachments/{$imgId}.jpg",
+                    'type' => 'image',
+                    'sort_order' => $order++,
+                ]);
+            }
+
+            // Attach 3 random videos
+            $videos = collect(range(1, 10))->random(3);
+            foreach ($videos as $vidId) {
+                $service->attachments()->create([
+                    'title' => 'Video ' . $order,
+                    'file_path' => "attachments/{$vidId}.mp4",
+                    'type' => 'video',
+                    'sort_order' => $order++,
+                ]);
+            }
         }
 
         // Clients
