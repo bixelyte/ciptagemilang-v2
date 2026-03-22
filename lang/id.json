@@ -39,10 +39,20 @@
     "Let's discuss how we can bring your project vision to life with our expertise and dedication.": "Mari diskusikan bagaimana kami dapat mewujudkan visi proyek Anda dengan keahlian dan dedikasi kami.",
     "Get in Touch": "Hubungi Kami",
 
+    "SERVICES": "LAYANAN",
+    "PROJECTS": "PROYEK",
+    "CLIENTS": "KLIEN",
+    "CONTACT": "KONTAK",
+    "TRUSTED BY BRANDS": "DIPERCAYA OLEH BEBERAPA BRAND",
+    "GET IN TOUCH WITH OUR TEAM": "HUBUNGI TIM KAMI",
+
     "CONTACT US": "HUBUNGI KAMI",
     "Have a project in mind? We'd love to hear from you. Send us a message and we'll respond as soon as possible.": "Punya proyek dalam pikiran? Kami ingin mendengar dari Anda. Kirim pesan dan kami akan merespon secepatnya.",
     "Contact Information": "Informasi Kontak",
     "Address": "Alamat",
+    "Office Address": "Alamat Kantor",
+    "Phone": "Telepon",
+    "Email": "Email",
     "Send a Message": "Kirim Pesan",
     "Message Sent!": "Pesan Terkirim!",
     "Send Another Message": "Kirim Pesan Lagi",
@@ -70,5 +80,21 @@
 
     "Language": "Bahasa",
     "Indonesian": "Indonesia",
-    "English": "Inggris"
+    "English": "Inggris",
+
+    "Featured Projects": "Proyek Unggulan",
+    "All Projects": "Semua Proyek",
+    "Search title or location...": "Cari judul atau lokasi...",
+    "All Scopes": "Semua Cakupan",
+    "Title": "Judul",
+    "Location": "Lokasi",
+    "Year": "Tahun",
+    "Scope": "Cakupan",
+    "No projects found matching the criteria.": "Tidak ada proyek yang sesuai dengan kriteria.",
+
+    "Fax": "Faks",
+    "John Doe": "John Doe",
+    "john@example.com": "john@contoh.com",
+    "How can we help you?": "Apa yang bisa kami bantu?",
+    "Your message here...": "Ketik pesan Anda di sini..."
 }

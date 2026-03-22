@@ -9,12 +9,10 @@ use Spatie\Translatable\HasTranslations;
 
 class Project extends Model
 {
-    use HasFactory, HasTranslations;
-
-    public array $translatable = ['title', 'scope', 'description', 'location'];
+    use HasFactory;
 
     protected $fillable = [
-        'title', 'slug', 'location', 'year', 'image', 'scope',
+        'slug', 'location', 'year', 'image', 'video', 'scope',
         'description', 'client_id', 'is_featured', 'is_active', 'sort_order',
     ];
 
@@ -26,7 +24,10 @@ class Project extends Model
     protected static function booted(): void
     {
         static::creating(function (Project $p) {
-            if (empty($p->slug)) $p->slug = Str::slug($p->title . '-' . $p->year);
+            if (empty($p->slug)) {
+                $clientName = $p->client ? $p->client->name : 'project';
+                $p->slug = Str::slug($clientName . '-' . $p->year . '-' . Str::random(4));
+            }
         });
     }
 

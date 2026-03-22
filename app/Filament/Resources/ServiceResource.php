@@ -43,15 +43,15 @@ class ServiceResource extends Resource
                     Textarea::make('short_description.en')->label('Short Description (EN)')->required()->rows(3),
                     RichEditor::make('description.en')->label('Description (EN)')->columnSpanFull(),
                 ])->columns(2),
-            ])->columnSpanFull(),
+            ])->columnSpan(['sm' => 3, 'lg' => 2]),
             Section::make('Settings')->schema([
                 TextInput::make('slug')->maxLength(255)->unique(ignoreRecord: true),
                 TextInput::make('icon')->default('engineering')->maxLength(255)->helperText('Google Material Symbols icon name'),
-                FileUpload::make('image')->image()->directory('services'),
+                FileUpload::make('image')->image()->directory('services')->disk('public'),
                 TextInput::make('sort_order')->numeric()->default(0),
                 Toggle::make('is_active')->default(true),
-            ])->columns(2),
-        ]);
+            ])->columns(1)->columnSpan(['sm' => 3, 'lg' => 1]),
+        ])->columns(3);
     }
 
     public static function table(Table $table): Table
@@ -73,7 +73,7 @@ class ServiceResource extends Resource
     public static function getRelations(): array
     {
         return [
-            \App\Filament\RelationManagers\AttachmentsRelationManager::class,
+            //
         ];
     }
 

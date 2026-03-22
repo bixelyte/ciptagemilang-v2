@@ -38,23 +38,23 @@ class ClientResource extends Resource
                 Tab::make('🇬🇧 English')->schema([
                     Textarea::make('description.en')->label('Description (EN)')->rows(3),
                 ])->columns(2),
-            ])->columnSpanFull(),
+            ])->columnSpan(['sm' => 3, 'lg' => 2]),
             Section::make('Settings')->schema([
                 TextInput::make('name')->required()->maxLength(255),
                 TextInput::make('slug')->maxLength(255)->unique(ignoreRecord: true),
-                FileUpload::make('logo')->image()->directory('clients'),
+                FileUpload::make('logo')->image()->directory('clients')->disk('public'),
                 TextInput::make('website')->url()->maxLength(255),
                 TextInput::make('sort_order')->numeric()->default(0),
                 Toggle::make('is_active')->default(true),
-            ])->columns(2),
-        ]);
+            ])->columns(1)->columnSpan(['sm' => 3, 'lg' => 1]),
+        ])->columns(3);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('logo')->circular(),
+                Tables\Columns\ImageColumn::make('logo')->circular()->disk('public'),
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('projects_count')->counts('projects')->sortable()->label('Projects'),
                 Tables\Columns\IconColumn::make('is_active')->boolean(),

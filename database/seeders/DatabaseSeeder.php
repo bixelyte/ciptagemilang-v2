@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
 
         // Admin user
         User::updateOrCreate(
-            ['email' => 'admin@ciptagemilang.com'],
+            ['email' => 'admin@ciptagemilang.net'],
             [
                 'name' => 'Administrator',
                 'password' => Hash::make('password'),
@@ -220,55 +220,49 @@ class DatabaseSeeder extends Seeder
         Project::truncate();
         $projects = [
             [
-                'title' => ['id' => 'TIMEZONE', 'en' => 'TIMEZONE'],
-                'location' => ['id' => 'Summarecon Mall, Bandung', 'en' => 'Summarecon Mall, Bandung'],
+                'location' => 'Summarecon Mall, Bandung',
                 'year' => '2024',
-                'scope' => ['id' => 'Renovasi Sipil, Layanan Mekanikal', 'en' => 'Civil Renovation, Mechanical Services'],
+                'scope' => 'Renovasi Sipil, Layanan Mekanikal',
                 'is_featured' => true, 'sort_order' => 1,
                 'image' => 'projects/timezone.png',
                 'client_name' => 'Timezone',
             ],
             [
-                'title' => ['id' => 'STARBUCKS', 'en' => 'STARBUCKS'],
-                'location' => ['id' => 'Pengosekan Ubud Bali', 'en' => 'Pengosekan Ubud Bali'],
+                'location' => 'Pengosekan Ubud Bali',
                 'year' => '2025',
-                'scope' => ['id' => 'Mekanikal Elektrikal, HVAC', 'en' => 'Mechanical Electrical, HVAC'],
+                'scope' => 'Mekanikal Elektrikal, HVAC',
                 'is_featured' => true, 'sort_order' => 2,
                 'image' => 'projects/starbucks.png',
                 'client_name' => 'Starbucks',
             ],
             [
-                'title' => ['id' => 'KOPI KENANGAN', 'en' => 'KOPI KENANGAN'],
-                'location' => ['id' => 'Merr Rungkut Surabaya', 'en' => 'Merr Rungkut Surabaya'],
+                'location' => 'Merr Rungkut Surabaya',
                 'year' => '2025',
-                'scope' => ['id' => 'Mekanikal Elektrikal, HVAC', 'en' => 'Mechanical Electrical, HVAC'],
+                'scope' => 'Mekanikal Elektrikal, HVAC',
                 'is_featured' => true, 'sort_order' => 3,
                 'image' => 'projects/kopikenangan.png',
                 'client_name' => 'Kopi Kenangan',
             ],
             [
-                'title' => ['id' => 'PIZZA HUT', 'en' => 'PIZZA HUT'],
-                'location' => ['id' => 'Galaxy Mall, Surabaya', 'en' => 'Galaxy Mall, Surabaya'],
+                'location' => 'Galaxy Mall, Surabaya',
                 'year' => '2024',
-                'scope' => ['id' => 'Pekerjaan Sipil & ME', 'en' => 'Civil & ME Works'],
+                'scope' => 'Pekerjaan Sipil & ME',
                 'is_featured' => true, 'sort_order' => 4,
                 'image' => 'projects/pizzahut.png',
                 'client_name' => 'Pizza Hut',
             ],
             [
-                'title' => ['id' => 'BURGER KING', 'en' => 'BURGER KING'],
-                'location' => ['id' => 'Senayan City, Jakarta', 'en' => 'Senayan City, Jakarta'],
+                'location' => 'Senayan City, Jakarta',
                 'year' => '2023',
-                'scope' => ['id' => 'Interior Fit-out & HVAC', 'en' => 'Interior Fit-out & HVAC'],
+                'scope' => 'Interior Fit-out & HVAC',
                 'is_featured' => true, 'sort_order' => 5,
                 'image' => 'projects/burgerking.png',
                 'client_name' => 'Burger King',
             ],
             [
-                'title' => ['id' => 'SUBWAY', 'en' => 'SUBWAY'],
-                'location' => ['id' => 'Pakuwon Mall, Surabaya', 'en' => 'Pakuwon Mall, Surabaya'],
+                'location' => 'Pakuwon Mall, Surabaya',
                 'year' => '2024',
-                'scope' => ['id' => 'Elektrikal & Plumbing', 'en' => 'Electrical & Plumbing'],
+                'scope' => 'Elektrikal & Plumbing',
                 'is_featured' => true, 'sort_order' => 6,
                 'image' => 'projects/subway.png',
                 'client_name' => 'Subway',
@@ -280,6 +274,7 @@ class DatabaseSeeder extends Seeder
             $client = Client::where('name', $clientName)->first();
             Project::create($project + [
                 'client_id' => $client?->id,
+                'video' => null,
                 'is_active' => true,
             ]);
         }
@@ -290,14 +285,19 @@ class DatabaseSeeder extends Seeder
             'company_name' => ['id' => 'PT. CIPTA GEMILANG TEKNIK MANDIRI', 'en' => 'PT. CIPTA GEMILANG TEKNIK MANDIRI'],
             'company_short_name' => ['id' => 'CIPTA GEMILANG', 'en' => 'CIPTA GEMILANG'],
             'company_tagline' => ['id' => 'TEKNIK MANDIRI', 'en' => 'TEKNIK MANDIRI'],
-            'company_description' => ['id' => 'Menetapkan standar dalam konstruksi industri mewah dan solusi teknik kelas atas di seluruh Indonesia. Berkomitmen pada keunggulan sejak 2004.', 'en' => 'Setting the benchmark in luxury industrial construction and high-end engineering solutions across Indonesia. Committed to excellence since 2004.'],
-            'company_address' => ['id' => 'Kantor Jakarta, Jakarta Barat, Indonesia', 'en' => 'Jakarta Office, West Jakarta, Indonesia'],
-            'company_phone' => ['id' => '+62 21 0000 0000', 'en' => '+62 21 0000 0000'],
-            'company_email' => ['id' => 'info@ciptagemilang.com', 'en' => 'info@ciptagemilang.com'],
+            'company_description' => ['id' => 'Mitra tepercaya dalam Engineering Design, Procurement, dan Construction (EPC) sejak 2006. Berdedikasi menghadirkan solusi mekanikal, elektrikal, dan sipil interior terbaik untuk berbagai fasilitas komersial di seluruh Indonesia.', 'en' => 'Your trusted partner in Engineering Design, Procurement, and Construction (EPC) since 2006. Dedicated to delivering premier mechanical, electrical, and civil interior solutions for commercial facilities across Indonesia.'],
+            'company_address' => ['id' => 'JL. Cendrawasih VI No. 1 Rt.06 Rw.06, Cengkareng Barat, Cengkareng, Jakarta Barat 11730', 'en' => 'JL. Cendrawasih VI No. 1 Rt.06 Rw.06, Cengkareng Barat, Cengkareng, Jakarta Barat 11730'],
+            'company_phone' => ['id' => '+62 21 5435 3637', 'en' => '+62 21 5435 3637'],
+            'company_fax' => ['id' => '+62 21 5435 3637', 'en' => '+62 21 5435 3637'],
+            'company_email' => ['id' => 'cgtm@ciptagemilang.net', 'en' => 'cgtm@ciptagemilang.net'],
             'about_title' => ['id' => 'Tentang Kami', 'en' => 'About Us'],
-            'about_description' => ['id' => 'PT. Cipta Gemilang Teknik Mandiri adalah perusahaan konstruksi dan teknik terkemuka di Indonesia, yang berspesialisasi dalam solusi terintegrasi dari perencanaan teknik konseptual hingga pemeliharaan teknis khusus. Dengan pengalaman lebih dari 20 tahun dan 900+ proyek selesai, kami memberikan kinerja presisi untuk setiap skala proyek.', 'en' => 'PT. Cipta Gemilang Teknik Mandiri is a leading construction and engineering company in Indonesia, specializing in integrated solutions from conceptual engineering to specialized technical maintenance. With over 20 years of experience and 900+ completed projects, we deliver precision performance for every project scale.'],
-            'about_mission' => ['id' => 'Menyediakan solusi konstruksi dan teknik terintegrasi berkualitas tinggi yang melebihi harapan klien melalui inovasi, keahlian, dan komitmen tanpa henti terhadap keunggulan.', 'en' => 'To provide integrated, high-quality construction and engineering solutions that exceed client expectations through innovation, expertise, and unwavering commitment to excellence.'],
-            'about_vision' => ['id' => 'Menjadi mitra konstruksi dan teknik paling tepercaya dan inovatif di Indonesia, menetapkan standar kualitas dan keandalan dalam setiap proyek yang kami kerjakan.', 'en' => 'To be Indonesia\'s most trusted and innovative construction and engineering partner, setting the benchmark for quality and reliability in every project we undertake.'],
+            'about_description' => ['id' => 'Berdiri pada 22 Februari 2006, PT. Cipta Gemilang Teknik Mandiri (CGTM) adalah mitra EPC terpercaya yang berspesialisasi pada Sistem Mekanikal Elektrikal dan Civil Interior untuk berbagai fasilitas komersial dan publik.
+
+Berbekal kepercayaan pelanggan dalam setiap siklus layanan—dari desain teknis hingga konstruksi menyeluruh—kami terus berkembang dengan senantiasa meningkatkan kualitas sumber daya manusia serta infrastruktur demi menetapkan standar pelayanan yang konsisten melebihi ekspektasi.', 'en' => 'Established on February 22, 2006, PT. Cipta Gemilang Teknik Mandiri (CGTM) is a trusted EPC partner specializing in high-end Mechanical, Electrical, and Civil Interior systems for various commercial and public facilities.
+
+Empowered by the enduring trust of our valued clients across all service lifecycles—from advanced engineering design to complete construction—we continue to grow by consistently elevating our human capital and infrastructure to deliver service standards that exceed expectations.'],
+            'about_mission' => ['id' => 'Terus mengembangkan kapasitas perusahaan dalam ranah rekayasa (engineering) dan konstruksi dengan menetapkan kebijakan progresif terkait sumber daya manusia dan fasilitas teknis demi memberikan solusi optimal yang selaras dengan misi pembangunan nasional.', 'en' => 'To continuously expand corporate capabilities in the engineering and construction sector by establishing progressive policies involving human capital and technical facilities, ultimately delivering optimal solutions aligned with the national development mission.'],
+            'about_vision' => ['id' => 'Menjadi mitra pengembang dan perancang (EPC) terdepan di Indonesia yang dipercaya sepenuh hati oleh pelanggan berkat keunggulan tata kelola, inovasi terencana, serta kontribusi berkelanjutannya di setiap proyek yang kami tangani.', 'en' => 'To be the foremost leading and wholeheartedly trusted EPC partner in Indonesia, recognized by our clients for governance excellence, deliberate innovation, and sustainable contribution in every project we handle.'],
         ];
         foreach ($settings as $key => $value) {
             CompanySetting::create(['key' => $key, 'value' => $value]);

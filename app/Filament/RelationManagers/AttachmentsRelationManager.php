@@ -40,6 +40,7 @@ class AttachmentsRelationManager extends RelationManager
                     ->required(),
                 FileUpload::make('file_path')
                     ->directory('attachments')
+                    ->disk('public')
                     ->required()
                     ->columnSpanFull(),
                 Textarea::make('description')
@@ -57,6 +58,7 @@ class AttachmentsRelationManager extends RelationManager
             ->columns([
                 ImageColumn::make('file_path')
                     ->label('Preview')
+                    ->disk('public')
                     ->square(),
                 TextColumn::make('title')->searchable(),
                 TextColumn::make('type')->badge(),

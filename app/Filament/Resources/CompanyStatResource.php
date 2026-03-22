@@ -36,14 +36,14 @@ class CompanyStatResource extends Resource
                 Tab::make('🇬🇧 English')->schema([
                     TextInput::make('label.en')->label('Label (EN)')->required()->maxLength(255),
                 ])->columns(2),
-            ])->columnSpanFull(),
+            ])->columnSpan(['sm' => 3, 'lg' => 2]),
             Section::make('Settings')->schema([
                 TextInput::make('icon')->required()->helperText('Google Material Symbols name'),
                 TextInput::make('value')->required()->maxLength(255),
                 TextInput::make('sort_order')->numeric()->default(0),
                 Toggle::make('is_active')->default(true),
-            ])->columns(2),
-        ]);
+            ])->columns(1)->columnSpan(['sm' => 3, 'lg' => 1]),
+        ])->columns(3);
     }
 
     public static function table(Table $table): Table

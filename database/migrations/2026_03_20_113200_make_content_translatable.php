@@ -15,13 +15,7 @@ return new class extends Migration
             $table->json('description')->nullable()->change();
         });
 
-        // Projects: title, scope, description, location → JSON
-        Schema::table('projects', function (Blueprint $table) {
-            $table->json('title')->change();
-            $table->json('scope')->change();
-            $table->json('description')->nullable()->change();
-            $table->json('location')->change();
-        });
+
 
         // Hero Banners: title, highlight_text, description, badge_text, cta_primary_text, cta_secondary_text → JSON
         Schema::table('hero_banners', function (Blueprint $table) {
@@ -57,12 +51,6 @@ return new class extends Migration
             $table->longText('description')->nullable()->change();
         });
 
-        Schema::table('projects', function (Blueprint $table) {
-            $table->string('title')->change();
-            $table->text('scope')->change();
-            $table->longText('description')->nullable()->change();
-            $table->string('location')->change();
-        });
 
         Schema::table('hero_banners', function (Blueprint $table) {
             $table->string('title')->change();

@@ -33,39 +33,35 @@ class ProjectResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema->components([
-            Tabs::make('Translations')->tabs([
-                Tab::make('🇮🇩 Indonesian')->schema([
-                    TextInput::make('title.id')->label('Title (ID)')->required()->maxLength(255),
-                    TextInput::make('location.id')->label('Location (ID)')->required()->maxLength(255),
-                    Textarea::make('scope.id')->label('Scope (ID)')->required()->rows(2),
-                    RichEditor::make('description.id')->label('Description (ID)')->columnSpanFull(),
-                ])->columns(2),
-                Tab::make('🇬🇧 English')->schema([
-                    TextInput::make('title.en')->label('Title (EN)')->required()->maxLength(255),
-                    TextInput::make('location.en')->label('Location (EN)')->required()->maxLength(255),
-                    Textarea::make('scope.en')->label('Scope (EN)')->required()->rows(2),
-                    RichEditor::make('description.en')->label('Description (EN)')->columnSpanFull(),
-                ])->columns(2),
-            ])->columnSpanFull(),
+            Section::make('Project Details')->schema([
+                Select::make('client_id')->label('Client')->relationship('client', 'name')->required()->searchable()->preload(),
+                TextInput::make('location')->label('Location')->required()->maxLength(255),
+                Textarea::make('scope')->label('Scope')->required()->rows(2)->columnSpanFull(),
+                RichEditor::make('description')->label('Description')->columnSpanFull(),
+            ])->columns(1)->columnSpan(['sm' => 3, 'lg' => 2]),
+
             Section::make('Settings')->schema([
                 TextInput::make('slug')->maxLength(255)->unique(ignoreRecord: true),
                 TextInput::make('year')->required()->maxLength(4),
-                Select::make('client_id')->relationship('client', 'name')->searchable()->preload(),
-                FileUpload::make('image')->image()->directory('projects'),
+                FileUpload::make('image')->image()->directory('projects')->disk('public'),
+                FileUpload::make('video')
+                    ->acceptedFileTypes(['video/mp4', 'video/webm', 'video/ogg'])
+                    ->directory('projects/videos')
+                    ->maxSize(102400)
+                    ->disk('public'),
                 Toggle::make('is_featured')->default(false),
                 Toggle::make('is_active')->default(true),
                 TextInput::make('sort_order')->numeric()->default(0),
-            ])->columns(2),
-        ]);
+            ])->columns(1)->columnSpan(['sm' => 3, 'lg' => 1]),
+        ])->columns(3);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('client.name')->sortable(),
+                Tables\Columns\ImageColumn::make('image')->disk('public'),
+                Tables\Columns\TextColumn::make('client.name')->label('Client')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('location')->searchable(),
                 Tables\Columns\TextColumn::make('year')->sortable(),
                 Tables\Columns\IconColumn::make('is_featured')->boolean(),
@@ -81,7 +77,7 @@ class ProjectResource extends Resource
     public static function getRelations(): array
     {
         return [
-            \App\Filament\RelationManagers\AttachmentsRelationManager::class,
+            //
         ];
     }
 

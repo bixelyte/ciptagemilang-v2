@@ -3,6 +3,8 @@
   $companyDescription = \App\Models\CompanySetting::get('company_description', '');
   $companyAddress = \App\Models\CompanySetting::get('company_address', '');
   $companyPhone = \App\Models\CompanySetting::get('company_phone', '');
+  $companyFax = \App\Models\CompanySetting::get('company_fax', '');
+  $companyEmail = \App\Models\CompanySetting::get('company_email', '');
 @endphp
 
 <footer class="bg-background-dark px-6 py-24 lg:px-20 relative overflow-hidden">
@@ -28,12 +30,16 @@
       </div>
       <div>
         <h4 class="mb-8 text-sm font-bold uppercase tracking-[0.3em] text-primary">{{ __('Quick Links') }}</h4>
+        @php
+          $isHome = Route::currentRouteNamed('home');
+        @endphp
         <ul class="flex flex-col gap-5 text-sm font-medium text-white/50">
-          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ route('home') }}"><span class="size-1 rounded-full bg-white/20"></span> {{ __('Home') }}</a></li>
-          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ route('services') }}"><span class="size-1 rounded-full bg-white/20"></span> {{ __('Services') }}</a></li>
-          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ route('projects') }}"><span class="size-1 rounded-full bg-white/20"></span> {{ __('Projects') }}</a></li>
-          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ route('about') }}"><span class="size-1 rounded-full bg-white/20"></span> {{ __('About Us') }}</a></li>
-          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ route('contact') }}"><span class="size-1 rounded-full bg-white/20"></span> {{ __('Contact') }}</a></li>
+          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ $isHome ? '#' : route('home') }}"><span class="size-1 rounded-full bg-white/20"></span> {{ __('Home') }}</a></li>
+          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ $isHome ? '#about' : route('about') }}"><span class="size-1 rounded-full bg-white/20"></span> {{ __('About Us') }}</a></li>
+          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ $isHome ? '#services' : route('services') }}"><span class="size-1 rounded-full bg-white/20"></span> {{ __('Services') }}</a></li>
+          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ $isHome ? '#projects' : route('projects') }}"><span class="size-1 rounded-full bg-white/20"></span> {{ __('Projects') }}</a></li>
+          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ $isHome ? '#clients' : route('clients') }}"><span class="size-1 rounded-full bg-white/20"></span> {{ __('Clients') }}</a></li>
+          <li><a class="hover:text-primary transition-colors flex items-center gap-2" href="{{ $isHome ? '#contact' : route('contact') }}"><span class="size-1 rounded-full bg-white/20"></span> {{ __('Contact') }}</a></li>
         </ul>
       </div>
       <div>
@@ -47,6 +53,18 @@
             <span class="material-symbols-outlined text-primary text-xl">call</span>
             {{ $companyPhone }}
           </li>
+          @if($companyFax)
+          <li class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-primary text-xl">fax</span>
+            {{ $companyFax }}
+          </li>
+          @endif
+          @if($companyEmail)
+          <li class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-primary text-xl">mail</span>
+            <span class="break-all">{{ $companyEmail }}</span>
+          </li>
+          @endif
         </ul>
       </div>
     </div>
