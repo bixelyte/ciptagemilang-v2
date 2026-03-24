@@ -644,7 +644,7 @@
            <template x-if="modal.type !== 'project'">
              <div class="flex flex-col lg:flex-row gap-8 lg:gap-16">
                {{-- Left: Text --}}
-               <div class="w-full lg:w-1/2 flex flex-col order-1">
+               <div class="w-full flex flex-col order-1">
                  <template x-if="modal.meta1 || modal.short_description">
                      <div class="mb-8 border-l-2 border-primary pl-5">
                        <template x-if="modal.meta1">
@@ -663,7 +663,7 @@
                </div>
 
                {{-- Right: Image --}}
-               <div class="w-full lg:w-1/2 order-2">
+               <div class="w-full lg:w-1/2 order-2 hidden">
                  <div class="relative w-full rounded-xl overflow-hidden thin-gold-border shadow-2xl bg-white/5" :class="modal.image_aspect">
                    <template x-if="modal.image">
                      <img :src="modal.image" :alt="modal.title" class="w-full h-full" :class="modal.image_class">
