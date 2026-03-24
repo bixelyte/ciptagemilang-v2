@@ -36,14 +36,15 @@ class ProjectResource extends Resource
             Section::make('Project Details')->schema([
                 Select::make('client_id')->label('Client')->relationship('client', 'name')->required()->searchable()->preload(),
                 TextInput::make('location')->label('Location')->required()->maxLength(255),
-                Textarea::make('scope')->label('Scope')->required()->rows(2)->columnSpanFull(),
+                TextInput::make('type')->label('Type')->required()->maxLength(255),
+                TextInput::make('scope')->label('Scope')->required()->maxLength(255),
                 RichEditor::make('description')->label('Description')->columnSpanFull(),
             ])->columns(1)->columnSpan(['sm' => 3, 'lg' => 2]),
 
             Section::make('Settings')->schema([
                 TextInput::make('slug')->maxLength(255)->unique(ignoreRecord: true),
                 TextInput::make('year')->required()->maxLength(4),
-                FileUpload::make('image')->image()->directory('projects')->disk('public'),
+                FileUpload::make('image')->image()->directory('projects/images')->disk('public'),
                 FileUpload::make('video')
                     ->acceptedFileTypes(['video/mp4', 'video/webm', 'video/ogg'])
                     ->directory('projects/videos')

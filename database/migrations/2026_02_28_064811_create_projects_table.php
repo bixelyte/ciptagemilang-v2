@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('year');
             $table->string('image')->nullable();
             $table->string('video')->nullable();
+            $table->text('type');
             $table->text('scope');
             $table->longText('description')->nullable();
             $table->foreignId('client_id')->nullable()->constrained()->nullOnDelete();

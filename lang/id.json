@@ -5,13 +5,11 @@
     "Clients": "Klien",
     "About": "Tentang",
     "Contact": "Kontak",
-
     "OUR SERVICES": "LAYANAN KAMI",
     "Service Details": "Detail Layanan",
     "What We Do": "Apa Yang Kami Kerjakan",
     "Specialized solutions in Civil works, Mechanical-Electrical (ME), HVAC systems, and high-end Procurement for luxury commercial environments.": "Solusi spesialis dalam pekerjaan Sipil, Mekanikal-Elektrikal (ME), sistem HVAC, dan Pengadaan kelas tinggi untuk lingkungan komersial mewah.",
     "View All Services": "Lihat Semua Layanan",
-
     "FEATURED PROJECTS": "PROYEK UNGGULAN",
     "PORTFOLIO OF EXCELLENCE": "PORTOFOLIO KEUNGGULAN",
     "Browse All Projects": "Lihat Semua Proyek",
@@ -20,16 +18,15 @@
     "Search projects...": "Cari proyek...",
     "All Years": "Semua Tahun",
     "No projects found matching your criteria.": "Tidak ada proyek yang sesuai dengan kriteria Anda.",
-
+    "Project Description": "Deskripsi Proyek",
+    "No description provided.": "Tidak ada deskripsi yang tersedia.",
     "OUR CLIENTS": "KLIEN KAMI",
     "PARTNERING WITH INDUSTRY LEADERS": "BERMITRA DENGAN PEMIMPIN INDUSTRI",
     "We are proud to work with some of the most recognized brands in Indonesia, delivering exceptional engineering and construction solutions.": "Kami bangga dapat bekerja sama dengan merek-merek paling terkenal di Indonesia, memberikan solusi teknik dan konstruksi yang luar biasa.",
     "Visit Website": "Kunjungi Website",
-
     "Need Our Services?": "Butuh Layanan Kami?",
     "Get in touch with our team to discuss your project requirements and receive a tailored solution.": "Hubungi tim kami untuk mendiskusikan kebutuhan proyek Anda dan dapatkan solusi yang disesuaikan.",
     "Start Your Project": "Mulai Proyek Anda",
-
     "Who We Are": "Siapa Kami",
     "About Us": "Tentang Kami",
     "Building the future with precision, innovation, and an unwavering commitment to excellence in heavy engineering and construction.": "Membangun masa depan dengan presisi, inovasi, dan komitmen tak tergoyahkan terhadap keunggulan dalam teknik berat dan konstruksi.",
@@ -38,14 +35,12 @@
     "Ready to Work Together?": "Siap Bekerja Sama?",
     "Let's discuss how we can bring your project vision to life with our expertise and dedication.": "Mari diskusikan bagaimana kami dapat mewujudkan visi proyek Anda dengan keahlian dan dedikasi kami.",
     "Get in Touch": "Hubungi Kami",
-
     "SERVICES": "LAYANAN",
     "PROJECTS": "PROYEK",
     "CLIENTS": "KLIEN",
     "CONTACT": "KONTAK",
     "TRUSTED BY BRANDS": "DIPERCAYA OLEH BEBERAPA BRAND",
     "GET IN TOUCH WITH OUR TEAM": "HUBUNGI TIM KAMI",
-
     "CONTACT US": "HUBUNGI KAMI",
     "Have a project in mind? We'd love to hear from you. Send us a message and we'll respond as soon as possible.": "Punya proyek dalam pikiran? Kami ingin mendengar dari Anda. Kirim pesan dan kami akan merespon secepatnya.",
     "Contact Information": "Informasi Kontak",
@@ -57,12 +52,10 @@
     "Message Sent!": "Pesan Terkirim!",
     "Send Another Message": "Kirim Pesan Lagi",
     "Sending...": "Mengirim...",
-
     "Quick Links": "Tautan Cepat",
     "All rights reserved.": "Hak cipta dilindungi.",
     "Privacy Policy": "Kebijakan Privasi",
     "Terms of Service": "Syarat Layanan",
-
     "Your Name": "Nama Anda",
     "Email Address": "Alamat Email",
     "Phone Number": "Nomor Telepon",
@@ -71,27 +64,25 @@
     "Your Message": "Pesan Anda",
     "Send Message": "Kirim Pesan",
     "Thank you for your message! We will get back to you shortly.": "Terima kasih atas pesan Anda! Kami akan segera menghubungi Anda.",
-
     "Need Consultation?": "Butuh Konsultasi?",
     "Speak with our experts to find the best solution for your requirements.": "Bicarakan dengan pakar kami untuk menemukan solusi terbaik bagi kebutuhan Anda.",
     "Contact Us": "Hubungi Kami",
     "Explore Other Services": "Jelajahi Layanan Lainnya",
     "Media & Attachments": "Media & Lampiran",
-
     "Language": "Bahasa",
     "Indonesian": "Indonesia",
     "English": "Inggris",
-
     "Featured Projects": "Proyek Unggulan",
     "All Projects": "Semua Proyek",
     "Search title or location...": "Cari judul atau lokasi...",
-    "All Scopes": "Semua Cakupan",
+    "All Scopes": "Semua Lingkup",
+    "All Types": "Semua Jenis",
+    "Type": "Jenis",
     "Title": "Judul",
     "Location": "Lokasi",
     "Year": "Tahun",
-    "Scope": "Cakupan",
+    "Scope": "Lingkup",
     "No projects found matching the criteria.": "Tidak ada proyek yang sesuai dengan kriteria.",
-
     "Fax": "Faks",
     "John Doe": "John Doe",
     "john@example.com": "john@contoh.com",

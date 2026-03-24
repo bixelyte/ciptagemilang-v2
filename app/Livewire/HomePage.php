@@ -69,12 +69,14 @@ class HomePage extends Component
     public $searchProject = '';
     public $filterYear = '';
     public $filterScope = '';
+    public $filterType = '';
     public $sortField = 'year';
     public $sortDirection = 'desc';
 
     public function updatingSearchProject() { $this->resetPage('projectsPage'); }
     public function updatingFilterYear() { $this->resetPage('projectsPage'); }
     public function updatingFilterScope() { $this->resetPage('projectsPage'); }
+    public function updatingFilterType() { $this->resetPage('projectsPage'); }
 
     public function sortProjects($field)
     {
@@ -106,11 +108,23 @@ class HomePage extends Component
             $allProjectsQuery->where('scope', 'like', '%' . $this->filterScope . '%');
         }
 
+        if ($this->filterType) {
+            $allProjectsQuery->where('type', 'like', '%' . $this->filterType . '%');
+        }
+
         $allProjectsQuery->orderBy($this->sortField, $this->sortDirection);
         $allProjects = $allProjectsQuery->paginate(10, ['*'], 'projectsPage');
 
         $availableYears = Project::active()->select('year')->distinct()->orderBy('year', 'desc')->pluck('year');
-        $availableScopes = Project::active()->select('scope')->distinct()->pluck('scope');
+        $availableTypes = Project::active()->pluck('type')
+            ->flatMap(function ($typeGroup) {
+                return array_map('trim', explode(',', $typeGroup ?: ''));
+            })
+            ->filter()
+            ->unique()
+            ->sort()
+            ->values()
+            ->toArray();
 
         return view('livewire.home-page', [
             'banners'        => HeroBanner::active()->ordered()->get(),
@@ -119,7 +133,7 @@ class HomePage extends Component
             'projects'       => Project::active()->featured()->ordered()->take(6)->get(),
             'allProjects'    => $allProjects,
             'availableYears' => $availableYears,
-            'availableScopes'=> $availableScopes,
+            'availableTypes' => $availableTypes,
             'clients'        => Client::active()->ordered()->get(),
             // About Us
             'companyName'    => CompanySetting::get('company_name', 'PT. CIPTA GEMILANG TEKNIK MANDIRI'),

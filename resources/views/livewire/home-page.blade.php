@@ -126,7 +126,7 @@
                   {{ $banner->description }}
                 </p>
               @endif
-              <div class="flex flex-row gap-5">
+              <div class="flex flex-row gap-5 hidden">
                 @if ($banner->cta_primary_text)
                   <a href="{{ $banner->cta_primary_url ?? '#' }}" class="flex h-10 md:h-14 items-center justify-center rounded-lg gold-solid-gradient-orange gradient-border-opposite bevel-effect px-4 text-xs md:px-10 md:text-sm font-extrabold uppercase tracking-wider text-background-dark shadow-2xl cta-start-project">
                     {{ $banner->cta_primary_text }}
@@ -288,7 +288,8 @@
                      icon: 'domain',
                      short_description: @js($project->location),
                      description: @js($project->description),
-                     meta1: @js($project->scope),
+                     meta1: @js($project->type),
+                     meta2: @js($project->scope),
                      badge: @js($project->year),
                      image: @js($project->image ? Storage::url($project->image) : ''),
                      video: @js($project->video ? Storage::url($project->video) : ''),
@@ -311,7 +312,7 @@
                      </div>
                      <p class="text-white text-sm font-medium mb-1.5">{{ $project->location }}</p>
                      <p class="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em] relative pr-6">
-                       {{ $project->scope }}
+                       {{ $project->type }}
                        <span class="material-symbols-outlined text-xs absolute right-0 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300">open_in_new</span>
                      </p>
                    </div>
@@ -330,9 +331,9 @@
                          <option value="{{ $y }}" class="bg-background-dark">{{ $y }}</option>
                      @endforeach
                  </select>
-                 <select wire:model.live="filterScope" class="bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-primary transition-colors w-full md:max-w-xs">
-                     <option value="" class="bg-background-dark">{{ __('All Scopes') }}</option>
-                     @foreach($availableScopes as $s)
+                 <select wire:model.live="filterType" class="bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-primary transition-colors w-full md:max-w-xs">
+                     <option value="" class="bg-background-dark">{{ __('All Types') }}</option>
+                     @foreach($availableTypes as $s)
                          <option value="{{ $s }}" class="bg-background-dark">{{ $s }}</option>
                      @endforeach
                  </select>
@@ -352,6 +353,9 @@
                              <th class="px-6 py-5 cursor-pointer hover:text-white transition-colors whitespace-nowrap" wire:click="sortProjects('year')">
                                  <div class="flex items-center gap-2">{{ __('Year') }} <span class="text-primary text-[10px]">{{ $sortField === 'year' ? ($sortDirection === 'asc' ? '▲' : '▼') : '' }}</span></div>
                              </th>
+                             <th class="px-6 py-5 cursor-pointer hover:text-white transition-colors whitespace-nowrap" wire:click="sortProjects('type')">
+                                 <div class="flex items-center gap-2">{{ __('Type') }} <span class="text-primary text-[10px]">{{ $sortField === 'type' ? ($sortDirection === 'asc' ? '▲' : '▼') : '' }}</span></div>
+                             </th>
                              <th class="px-6 py-5 cursor-pointer hover:text-white transition-colors whitespace-nowrap" wire:click="sortProjects('scope')">
                                  <div class="flex items-center gap-2">{{ __('Scope') }} <span class="text-primary text-[10px]">{{ $sortField === 'scope' ? ($sortDirection === 'asc' ? '▲' : '▼') : '' }}</span></div>
                              </th>
@@ -366,7 +370,8 @@
                               icon: 'domain',
                               short_description: @js($ap->location),
                               description: @js($ap->description),
-                              meta1: @js($ap->scope),
+                              meta1: @js($ap->type),
+                              meta2: @js($ap->scope),
                               badge: @js($ap->year),
                               image: @js($ap->image ? Storage::url($ap->image) : ''),
                               video: @js($ap->video ? Storage::url($ap->video) : ''),
@@ -379,6 +384,7 @@
                              </td>
                              <td class="px-6 py-5 min-w-[200px]">{{ $ap->location }}</td>
                              <td class="px-6 py-5"><span class="px-3 py-1 bg-primary text-background-dark rounded-sm text-[10px] font-black tracking-widest">{{ $ap->year }}</span></td>
+                             <td class="px-6 py-5 text-white/50 text-xs tracking-wider uppercase min-w-[250px]">{{ $ap->type }}</td>
                              <td class="px-6 py-5 text-white/50 text-xs tracking-wider uppercase min-w-[250px]">{{ $ap->scope }}</td>
                          </tr>
                          @empty
@@ -407,6 +413,7 @@
             fn($c) => [
                 'name' => $c->name,
                 'logo' => $c->logo ? Storage::url($c->logo) : null,
+                'website' => $c->website,
             ],
         )
         ->toJson();
@@ -469,14 +476,16 @@
                 <div class="flex flex-wrap items-center justify-center gap-y-8 lg:gap-y-12">
                   <template x-for="client in chunk" :key="client.name">
                     <div class="flex items-center justify-center w-1/2 md:w-1/3 lg:w-1/4 px-4">
-                      <div class="flex items-center justify-center w-full max-w-[200px] aspect-[4/3] text-center">
-                        <template x-if="client.logo">
-                          <img :alt="client.name" class="w-full h-full object-contain" :src="client.logo" />
-                        </template>
-                        <template x-if="!client.logo">
-                          <span class="text-sm font-black tracking-tighter text-white uppercase" x-text="client.name"></span>
-                        </template>
-                      </div>
+                      <a :href="client.website" target="_blank">
+                        <div class="flex items-center justify-center w-full max-w-[200px] aspect-[4/3] text-center">
+                          <template x-if="client.logo">
+                            <img :alt="client.name" class="w-full h-full object-contain" :src="client.logo" />
+                          </template>
+                          <template x-if="!client.logo">
+                            <span class="text-sm font-black tracking-tighter text-white uppercase" x-text="client.name"></span>
+                          </template>
+                        </div>
+                      </a>
                     </div>
                   </template>
                 </div>
@@ -550,23 +559,23 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-[10px] font-bold uppercase tracking-[0.2em] text-white/50 mb-2">{{ __('Your Name') }}</label>
-                            <input wire:model="contactName" type="text" class="w-full bg-black/50 border border-white/10 rounded-md px-4 py-3 text-white text-sm focus:outline-none focus:border-primary transition-colors" placeholder="{{ __('John Doe') }}">
+                            <input wire:model="contactName" type="text" class="w-full bg-black/50 border border-white/10 rounded-md px-4 py-3 text-white text-sm focus:outline-none focus:border-primary transition-colors" placeholder="">
                             @error('contactName') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                         </div>
                         <div>
                             <label class="block text-[10px] font-bold uppercase tracking-[0.2em] text-white/50 mb-2">{{ __('Email Address') }}</label>
-                            <input wire:model="contactEmail" type="email" class="w-full bg-black/50 border border-white/10 rounded-md px-4 py-3 text-white text-sm focus:outline-none focus:border-primary transition-colors" placeholder="{{ __('john@example.com') }}">
+                            <input wire:model="contactEmail" type="email" class="w-full bg-black/50 border border-white/10 rounded-md px-4 py-3 text-white text-sm focus:outline-none focus:border-primary transition-colors" placeholder="">
                             @error('contactEmail') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                         </div>
                     </div>
                     <div>
                         <label class="block text-[10px] font-bold uppercase tracking-[0.2em] text-white/50 mb-2">{{ __('Subject') }}</label>
-                        <input wire:model="contactSubject" type="text" class="w-full bg-black/50 border border-white/10 rounded-md px-4 py-3 text-white text-sm focus:outline-none focus:border-primary transition-colors" placeholder="{{ __('How can we help you?') }}">
+                        <input wire:model="contactSubject" type="text" class="w-full bg-black/50 border border-white/10 rounded-md px-4 py-3 text-white text-sm focus:outline-none focus:border-primary transition-colors" placeholder="">
                         @error('contactSubject') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                     </div>
                     <div>
                         <label class="block text-[10px] font-bold uppercase tracking-[0.2em] text-white/50 mb-2">{{ __('Message') }}</label>
-                        <textarea wire:model="contactMessage" rows="4" class="w-full bg-black/50 border border-white/10 rounded-md px-4 py-3 text-white text-sm focus:outline-none focus:border-primary transition-colors resize-none" placeholder="{{ __('Your message here...') }}"></textarea>
+                        <textarea wire:model="contactMessage" rows="4" class="w-full bg-black/50 border border-white/10 rounded-md px-4 py-3 text-white text-sm focus:outline-none focus:border-primary transition-colors resize-none" placeholder=""></textarea>
                         @error('contactMessage') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                     </div>
                     
@@ -672,7 +681,7 @@
               <div class="flex flex-col gap-10">
                   {{-- Full width image and video --}}
                   <div class="flex flex-col gap-6">
-                      <template x-if="modal.image">
+                      <template x-if="modal.image && !modal.video">
                           <div class="w-full rounded-2xl overflow-hidden shadow-2xl relative bg-white/5">
                               <img :src="modal.image" :alt="modal.title" class="w-full h-auto object-cover max-h-[70vh]">
                           </div>
@@ -688,26 +697,27 @@
                   </div>
                   
                   {{-- Project Meta & Description --}}
-                  <div class="flex flex-col md:flex-row gap-8">
-                      <div class="w-full md:w-1/3 flex flex-col gap-4">
+                  <div class="flex flex-col gap-8">
+                      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
                           <div class="bg-white/5 rounded-xl p-6 border border-white/10">
                               <h4 class="text-white/40 text-xs font-bold uppercase tracking-widest mb-1">{{ __('Year') }}</h4>
-                              <p class="text-white font-bold text-lg" x-text="modal.badge"></p>
+                              <p class="text-primary font-bold text-lg" x-text="modal.badge"></p>
+                          </div>
+                          <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                              <h4 class="text-white/40 text-xs font-bold uppercase tracking-widest mb-1">{{ __('Type') }}</h4>
+                              <p class="text-primary font-bold text-base whitespace-pre-line" x-text="modal.meta1"></p>
                           </div>
                           <div class="bg-white/5 rounded-xl p-6 border border-white/10">
                               <h4 class="text-white/40 text-xs font-bold uppercase tracking-widest mb-1">{{ __('Scope') }}</h4>
-                              <p class="text-primary font-bold text-base whitespace-pre-line" x-text="modal.meta1"></p>
+                              <p class="text-primary font-bold text-base whitespace-pre-line" x-text="modal.meta2"></p>
                           </div>
                       </div>
-                      <div class="w-full md:w-2/3">
-                          <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">{{ __('Project Description') }}</h3>
-                          <template x-if="modal.description">
+                      <template x-if="modal.description">
+                          <div class="w-full">
+                              <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">{{ __('Project Description') }}</h3>
                               <div class="text-white/70 font-light leading-relaxed text-base prose prose-invert max-w-none break-words" x-html="modal.description"></div>
-                          </template>
-                          <template x-if="!modal.description">
-                              <p class="text-white/40 italic">{{ __('No description provided.') }}</p>
-                          </template>
-                      </div>
+                          </div>
+                      </template>
                   </div>
               </div>
            </template>

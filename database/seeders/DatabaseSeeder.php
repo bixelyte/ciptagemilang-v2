@@ -62,9 +62,12 @@ class DatabaseSeeder extends Seeder
         HeroBanner::create([
             'title' => ['id' => 'MENDUKUNG', 'en' => 'POWERING YOUR'],
             'highlight_text' => ['id' => 'INFRASTRUKTUR ANDA', 'en' => 'INFRASTRUCTURE'],
-            'description' => ['id' => 'Instalasi elektrikal komprehensif dan sistem HVAC efisiensi tinggi untuk ruang komersial. Spesialisasi dalam distribusi daya, video tron, dan solusi kontrol iklim.', 'en' => 'Comprehensive electrical installations and high-efficiency HVAC systems for commercial spaces. Specialized in power distribution, video tron, and climate control solutions.'],
+            'description' => [
+                'id' => 'Instalasi elektrikal, mekanikal, dan sistem HVAC berefisiensi tinggi untuk ruang komersial. Fokus pada distribusi daya optimal dan kontrol iklim yang cerdas.',
+                'en' => 'High-efficiency electrical, mechanical, and HVAC systems for commercial spaces. Focused on optimal power distribution and intelligent climate control.'
+            ],
             'image' => 'banners/hero-electrical.png',
-            'badge_text' => ['id' => 'Solusi Elektrikal & HVAC', 'en' => 'Electrical & HVAC Solutions'],
+            'badge_text' => ['id' => 'Solusi Elektrikal, Mekanikal & HVAC', 'en' => 'Electrical, Mechanical & HVAC Solutions'],
             'cta_primary_text' => ['id' => 'Minta Penawaran', 'en' => 'Get a Quote'],
             'cta_primary_url' => '/contact',
             'cta_secondary_text' => ['id' => 'Selengkapnya', 'en' => 'Learn More'],
@@ -74,11 +77,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         HeroBanner::create([
-            'title' => ['id' => 'MEMBANGUN', 'en' => 'BUILDING QUALITY'],
-            'highlight_text' => ['id' => 'INTERIOR BERKUALITAS', 'en' => 'INTERIORS'],
-            'description' => ['id' => 'Renovasi struktural dan finishing premium untuk interior dan fasad komersial kelas atas. Pekerjaan mekanikal umum dan pemeliharaan sistem industri khusus.', 'en' => 'Structural renovations and premium finishing for high-end commercial interiors and facades. General mechanical works and specialized industrial systems maintenance.'],
-            'image' => 'banners/hero-civil.png',
-            'badge_text' => ['id' => 'Sipil & Mekanikal', 'en' => 'Civil & Mechanical'],
+            'title' => ['id' => 'SIPIL INTERIOR', 'en' => 'CIVIL INTERIOR'],
+            'highlight_text' => ['id' => 'DAN EKSTERIOR', 'en' => 'AND EXTERIOR'],
+            'description' => ['id' => 'Renovasi struktural dan pengerjaan interior maupun eksterior kelas atas untuk fasilitas komersial dan publik dengan standar kualitas terbaik dan estetika yang fungsional.', 'en' => 'Structural renovations and high-end interior and exterior works for commercial and public facilities with the highest quality standards and functional aesthetics.'],
+            'image' => 'banners/hero-interior.png',
+            'badge_text' => ['id' => 'Sipil Interior & Exterior', 'en' => 'Civil Interior & Exterior'],
             'cta_primary_text' => ['id' => 'Mulai Proyek Anda', 'en' => 'Start Your Project'],
             'cta_primary_url' => '/contact',
             'cta_secondary_text' => ['id' => 'Klien Kami', 'en' => 'Our Clients'],
@@ -116,24 +119,40 @@ class DatabaseSeeder extends Seeder
                 'sort_order' => 1
             ],
             [
-                'title' => ['id' => 'Sistem Elektrikal', 'en' => 'Electrical Systems'], 
-                'icon' => 'bolt', 
-                'short_description' => ['id' => 'Instalasi elektrikal komprehensif, termasuk video tron dan distribusi daya khusus.', 'en' => 'Comprehensive electrical installations, including specialized video tron and power distribution.'], 
+                'title' => ['id' => 'Konstruksi', 'en' => 'Construction'], 
+                'icon' => 'foundation', 
+                'short_description' => [
+                    'id' => 'Layanan konstruksi komprehensif dari tahap fondasi hingga penyelesaian untuk fasilitas komersial dan industri.',
+                    'en' => 'Comprehensive construction services from foundation to completion for commercial and industrial facilities.'
+                ], 
                 'description' => [
-                    'en' => "We deliver comprehensive and scalable electrical installations tailored for high-demand commercial environments. From initial grid planning to final fixture installation, our certified electricians ensure maximum safety, reliability, and energy efficiency. We specialize in intricate power distribution networks, intelligent lighting solutions, and large-scale video tron integrations. <br><br><strong>Our Expertise:</strong><ul><li>High and Low Voltage Power Distribution</li><li>Custom Video Tron and Digital Signage Installation</li><li>Smart Lighting and Automation Systems</li><li>Emergency Backup and Generator Integration</li></ul>",
-                    'id' => "Kami memberikan instalasi elektrikal yang komprehensif dan terukur, disesuaikan untuk lingkungan komersial bernilai tinggi. Mulai dari perencanaan jaringan awal hingga instalasi akhir, teknisi bersertifikat kami memastikan keamanan, keandalan, dan efisiensi energi yang optimal. Kami berspesialisasi dalam jaringan distribusi daya yang rumit, solusi pencahayaan cerdas, dan integrasi video tron skala besar. <br><br><strong>Keahlian Kami:</strong><ul><li>Distribusi Daya Tegangan Tinggi dan Rendah</li><li>Instalasi Video Tron dan Papan Reklame Digital Khusus</li><li>Sistem Pencahayaan Pintar dan Otomatisasi</li><li>Cadangan Darurat dan Integrasi Generator</li></ul>"
+                    'en' => "We provide end-to-end construction services tailored to meet the rigorous demands of commercial and industrial developments. Our scope encompasses everything from foundational site works and structural erection to architectural finishing. With a steadfast commitment to safety, quality, and strict adherence to project timelines, our certified project managers and skilled builders bring architectural blueprints to life with uncompromising precision. <br><br><strong>Our Expertise:</strong><ul><li>Structural Foundation and Earthworks</li><li>Core Shell and Structural Erection</li><li>Architectural Finishing and Fit-outs</li><li>Comprehensive Site Management and Safety Compliance</li></ul>",
+                    'id' => "Kami menyediakan layanan konstruksi end-to-end yang disesuaikan untuk memenuhi standar ketat fasilitas komersial dan industri. Lingkup kerja kami mencakup segala hal, mulai dari pekerjaan sipil dan fondasi, pendirian struktur utama, hingga penyelesaian arsitektural. Dengan komitmen teguh terhadap keselamatan kerja, kualitas material, dan ketepatan waktu, tenaga ahli kami mewujudkan rancangan arsitektur menjadi struktur fisik dengan presisi tinggi. <br><br><strong>Keahlian Kami:</strong><ul><li>Pekerjaan Tanah dan Fondasi Struktural (Sipil)</li><li>Pendirian Struktur Utama Bangunan</li><li>Pekerjaan Finishing dan Fasad Arsitektural</li><li>Manajemen Proyek dan Kepatuhan K3 (Kesehatan dan Keselamatan Kerja)</li></ul>"
                 ],
                 'sort_order' => 2
             ],
             [
-                'title' => ['id' => 'Sistem HVAC', 'en' => 'HVAC Systems'], 
+                'title' => ['id' => 'Mekanikal & Elektrikal', 'en' => 'Mechanical & Electrical'], 
+                'icon' => 'bolt', 
+                'short_description' => [
+                    'id' => 'Pengerjaan mekanikal dan elektrikal untuk bangunan komersial dan industri.',
+                    'en' => 'Mechanical and electrical works for commercial and industrial buildings.'
+                ], 
+                'description' => [
+                    'en' => "We deliver comprehensive and scalable mechanical and electrical installations tailored for high-demand commercial environments. From initial grid planning to final fixture installation, our certified electricians ensure maximum safety, reliability, and energy efficiency. We specialize in intricate power distribution networks, intelligent lighting solutions, and robust technical systems. <br><br><strong>Our Expertise:</strong><ul><li>High and Low Voltage Power Distribution</li><li>Custom Digital Signage and Automation Integration</li><li>Smart Lighting and Automation Systems</li><li>Emergency Backup and Generator Integration</li></ul>",
+                    'id' => "Kami memberikan instalasi mekanikal dan elektrikal yang komprehensif dan terukur, disesuaikan untuk lingkungan komersial bernilai tinggi. Mulai dari perencanaan jaringan awal hingga instalasi akhir, teknisi bersertifikat kami memastikan keamanan, keandalan, dan efisiensi energi yang optimal. Kami berspesialisasi dalam jaringan distribusi daya yang rumit, solusi pencahayaan cerdas, dan sistem teknis yang tangguh. <br><br><strong>Keahlian Kami:</strong><ul><li>Distribusi Daya Tegangan Tinggi dan Rendah</li><li>Integrasi Papan Reklame Digital dan Otomatisasi Khusus</li><li>Sistem Pencahayaan Pintar dan Otomatisasi</li><li>Cadangan Darurat dan Integrasi Generator</li></ul>"
+                ],
+                'sort_order' => 3
+            ],
+            [
+                'title' => ['id' => 'HVAC', 'en' => 'HVAC'], 
                 'icon' => 'ac_unit', 
                 'short_description' => ['id' => 'Solusi ventilasi mekanik dan AC efisiensi tinggi untuk ruang komersial.', 'en' => 'High-efficiency mechanical ventilation and air conditioning solutions for commercial spaces.'], 
                 'description' => [
                     'en' => "Our HVAC solutions guarantee superior indoor air quality and precise climate control for complex structural environments. We design, install, and maintain high-efficiency mechanical ventilation and air conditioning systems that strictly adhere to international environmental standards. Our focus is on maximizing energy efficiency while minimizing operational noise and maintenance overhead. <br><br><strong>System Capabilities:</strong><ul><li>Centralized Chiller and VRV/VRF Installations</li><li>Precision Exhaust and Mechanical Ventilation</li><li>Cleanroom and Specialized Air Filtration</li><li>Automated Climate Monitoring and Control</li></ul>",
                     'id' => "Solusi HVAC kami menjamin sirkulasi udara dalam ruangan yang dikontrol dengan presisi untuk lingkungan struktural yang kompleks. Kami merancang, memasang, dan memelihara sistem ventilasi mekanik dan pendingin udara berefisiensi tinggi yang secara ketat mematuhi standar lingkungan internasional. Fokus kami adalah memaksimalkan efisiensi energi sambil meminimalkan kebisingan operasional dan biaya pemeliharaan. <br><br><strong>Kemampuan Sistem:</strong><ul><li>Instalasi Chiller Terpusat dan VRV/VRF</li><li>Pembuangan Presisi dan Ventilasi Mekanik</li><li>Ruang Bersih dan Penyaringan Udara Khusus</li><li>Pemantauan dan Kontrol Iklim Otomatis</li></ul>"
                 ],
-                'sort_order' => 3
+                'sort_order' => 4
             ],
             [
                 'title' => ['id' => 'Interior & Eksterior Sipil', 'en' => 'Civil Interior & Exterior'], 
@@ -142,16 +161,6 @@ class DatabaseSeeder extends Seeder
                 'description' => [
                     'en' => "Transforming concepts into tangible landmarks, our Civil Interior & Exterior services handle high-end commercial renovations with unmatched craftsmanship. We execute complex structural modifications, premium facade installations, and luxury interior finishing. Our team manages the entire lifecycle of the build, guaranteeing premium execution and exact adherence to architectural directives. <br><br><strong>Construction Prowess:</strong><ul><li>Luxury Commercial Interior Fit-Outs</li><li>Modern Facade Glass and ACP Installations</li><li>Structural Reinforcement and Modification</li><li>Premium Custom Millwork and Flooring</li></ul>",
                     'id' => "Mengubah konsep bangunan abstrak menjadi nyata, layanan Interior & Eksterior Sipil kami menangani renovasi komersial kelas atas dengan pengerjaan yang tak tertandingi. Kami melaksanakan modifikasi struktural yang kompleks, pemasangan fasad premium, dan penyelesaian interior mewah. Tim kami mengelola seluruh siklus pembangunan, menjamin eksekusi premium dan kepatuhan yang tepat terhadap arahan arsitektur. <br><br><strong>Keunggulan Konstruksi:</strong><ul><li>Fit-Out Interior Komersial Mewah</li><li>Pemasangan Kaca Fasad dan ACP Modern</li><li>Penguatan dan Modifikasi Struktural</li><li>Pembuatan Profil, Kusen, dan Lantai Khusus Premium</li></ul>"
-                ],
-                'sort_order' => 4
-            ],
-            [
-                'title' => ['id' => 'Layanan Mekanikal', 'en' => 'Mechanical Services'], 
-                'icon' => 'settings_suggest', 
-                'short_description' => ['id' => 'Pekerjaan mekanikal umum dan pemeliharaan sistem industri khusus.', 'en' => 'General mechanical works and specialized industrial systems maintenance.'], 
-                'description' => [
-                    'en' => "Our Mechanical Services division is dedicated to the robust lifecycle management of intricate industrial and commercial machinery. We provide holistic mechanical interventions, encompassing routine proactive maintenance, emergency physical repairs, and complete system overhauls. We ensure your core operational mechanisms function seamlessly around the clock. <br><br><strong>Mechanical Offerings:</strong><ul><li>Heavy Machinery Installation and Calibration</li><li>Preventative Plumbing and Piping Maintenance</li><li>Industrial Conveyor and Esculator Servicing</li><li>Fire Protection and Sprinkler Systems</li></ul>",
-                    'id' => "Divisi Layanan Mekanikal kami berdedikasi pada manajemen siklus hidup yang kuat dari mesin industri dan komersial yang rumit. Kami menyediakan intervensi mekanis holistik, mencakup pemeliharaan proaktif rutin, perbaikan fisik darurat, dan perbaikan sistem secara keseluruhan. Kami memastikan mekanisme operasional utama Anda berfungsi dengan mulus sepanjang waktu. <br><br><strong>Penawaran Mekanikal:</strong><ul><li>Pemasangan dan Kalibrasi Mesin Berat</li><li>Pemeliharaan Plambing dan Perpipaan Preventif</li><li>Servis Konveyor Industri dan Eskalator</li><li>Sistem Perlindungan Kebakaran dan Penyiram Air</li></ul>"
                 ],
                 'sort_order' => 5
             ],
@@ -196,21 +205,96 @@ class DatabaseSeeder extends Seeder
         // Clients
         Client::truncate();
         $clients = [
-            ['name' => 'Timezone',        'logo' => 'clients/timezone.svg',          'sort_order' => 1],
-            ['name' => 'Starbucks',       'logo' => 'clients/starbucks.svg',          'sort_order' => 2],
-            ['name' => 'Kopi Kenangan',   'logo' => 'clients/kopi-kenangan.svg',      'sort_order' => 3],
-            ['name' => 'Pizza Hut',       'logo' => 'clients/pizza-hut.svg',          'sort_order' => 4],
-            ['name' => 'Burger King',     'logo' => 'clients/burger-king.svg',        'sort_order' => 5],
-            ['name' => 'Subway',          'logo' => 'clients/subway.svg',             'sort_order' => 6],
-            ['name' => 'KFC',             'logo' => 'clients/kfc.svg',                'sort_order' => 7],
-            ['name' => 'Chagee',          'logo' => 'clients/chagee.svg',             'sort_order' => 8],
-            ['name' => 'Matahari',        'logo' => 'clients/matahari.svg',           'sort_order' => 9],
-            ['name' => 'Play N Learn',    'logo' => 'clients/play-n-learn.svg',       'sort_order' => 10],
-            ['name' => 'HokBen',          'logo' => 'clients/hokben.png',             'sort_order' => 11],
-            ['name' => 'Ha-Yo',           'logo' => 'clients/ha-yo.jpg',              'sort_order' => 12],
-            ['name' => 'Kitchenette',     'logo' => 'clients/kitchenette.png',        'sort_order' => 13],
-            ['name' => 'Ta Wan',          'logo' => 'clients/ta-wan.png',             'sort_order' => 14],
-            ['name' => 'The People Cafe', 'logo' => 'clients/the-people-cafe.png',    'sort_order' => 15],
+            [
+                'name' => 'Timezone',        
+                'logo' => 'clients/timezone.svg',    
+                'website' => 'https://www.timezone.co.id/',      
+                'sort_order' => 1,
+            ],
+            [
+                'name' => 'Starbucks',       
+                'logo' => 'clients/starbucks.svg',          
+                'website' => 'https://www.starbucks.co.id/',
+                'sort_order' => 2
+            ],
+            [
+                'name' => 'Kopi Kenangan',   
+                'logo' => 'clients/kopi-kenangan.svg',
+                'website' => 'https://www.kopikenangan.com/',
+                'sort_order' => 3
+            ],
+            [
+                'name' => 'Pizza Hut',       
+                'logo' => 'clients/pizza-hut.svg',          
+                'website' => 'https://www.pizzahut.co.id/',
+                'sort_order' => 4
+            ],
+            [
+                'name' => 'Burger King',     
+                'logo' => 'clients/burger-king.svg',        
+                'website' => 'https://bkdelivery.co.id/',
+                'sort_order' => 5
+            ],
+            [
+                'name' => 'Subway',          
+                'logo' => 'clients/subway.svg',             
+                'website' => 'https://www.subway.co.id/',
+                'sort_order' => 6
+            ],
+            [
+                'name' => 'KFC',             
+                'logo' => 'clients/kfc.svg',                
+                'website' => 'https://kfcku.com/',
+                'sort_order' => 7
+            ],
+            [
+                'name' => 'Chagee',          
+                'logo' => 'clients/chagee.svg',     
+                'website' => 'https://global.chagee.com/id/ind',        
+                'sort_order' => 8
+            ],
+            [
+                'name' => 'Matahari',        
+                'logo' => 'clients/matahari.svg',
+                'website' => 'https://www.matahari.com/',
+                'sort_order' => 9
+            ],
+            [
+                'name' => 'Play N Learn',    
+                'logo' => 'clients/play-n-learn.svg',       
+                'website' => 'https://www.instagram.com/playnlearn_id/',
+                'sort_order' => 10
+            ],
+            [
+                'name' => 'HokBen',          
+                'logo' => 'clients/hokben.png',             
+                'website' => 'https://www.hokben.co.id/',
+                'sort_order' => 11
+            ],
+            [
+                'name' => 'Ha-Yo',           
+                'logo' => 'clients/ha-yo.jpg',              
+                'website' => 'https://www.instagram.com/hayo.froyo/',
+                'sort_order' => 12
+            ],
+            [
+                'name' => 'Kitchenette',     
+                'logo' => 'clients/kitchenette.png',        
+                'website' => 'https://www.ismaya.com/brands/kitchenette',
+                'sort_order' => 13
+            ],
+            [
+                'name' => 'Ta Wan',          
+                'logo' => 'clients/ta-wan.png',             
+                'website' => 'https://www.tawanrestaurant.com/',
+                'sort_order' => 14
+            ],
+            [
+                'name' => 'The People Cafe', 
+                'logo' => 'clients/the-people-cafe.png',    
+                'website' => 'https://www.ismaya.com/brands/the-peoples-cafe',
+                'sort_order' => 15
+            ],
         ];
         foreach ($clients as $client) {
             Client::create($client + ['is_active' => true]);
@@ -220,51 +304,69 @@ class DatabaseSeeder extends Seeder
         Project::truncate();
         $projects = [
             [
-                'location' => 'Summarecon Mall, Bandung',
-                'year' => '2024',
-                'scope' => 'Renovasi Sipil, Layanan Mekanikal',
-                'is_featured' => true, 'sort_order' => 1,
-                'image' => 'projects/timezone.png',
+                'location' => 'Pantai Indah Kapuk, Jakarta',
+                'year' => '2025',
+                'type' => 'Civil, Electrical, Fixtures, Laser Tag',
+                'scope' => 'Construction',
+                'is_featured' => true, 
+                'sort_order' => 1,
+                'image' => 'projects/images/timezone.png',
+                'video' => 'projects/videos/timezone.mp4',
                 'client_name' => 'Timezone',
             ],
             [
-                'location' => 'Pengosekan Ubud Bali',
+                'location' => 'Mega Mall, Batam',
                 'year' => '2025',
-                'scope' => 'Mekanikal Elektrikal, HVAC',
-                'is_featured' => true, 'sort_order' => 2,
-                'image' => 'projects/starbucks.png',
-                'client_name' => 'Starbucks',
-            ],
-            [
-                'location' => 'Merr Rungkut Surabaya',
-                'year' => '2025',
-                'scope' => 'Mekanikal Elektrikal, HVAC',
-                'is_featured' => true, 'sort_order' => 3,
-                'image' => 'projects/kopikenangan.png',
-                'client_name' => 'Kopi Kenangan',
-            ],
-            [
-                'location' => 'Galaxy Mall, Surabaya',
-                'year' => '2024',
-                'scope' => 'Pekerjaan Sipil & ME',
-                'is_featured' => true, 'sort_order' => 4,
-                'image' => 'projects/pizzahut.png',
+                'type' => 'Mechanical, Electrical, HVAC',
+                'scope' => 'Construction',
+                'is_featured' => true, 
+                'sort_order' => 2,
+                'image' => 'projects/images/pizzahut.png',
+                'video' => null,
                 'client_name' => 'Pizza Hut',
             ],
             [
-                'location' => 'Senayan City, Jakarta',
-                'year' => '2023',
-                'scope' => 'Interior Fit-out & HVAC',
-                'is_featured' => true, 'sort_order' => 5,
-                'image' => 'projects/burgerking.png',
+                'location' => 'Mahakam, Jakarta Selatan',
+                'year' => '2025',
+                'type' => 'Mechanical, Electrical',
+                'scope' => 'Construction',
+                'is_featured' => true, 
+                'sort_order' => 3,
+                'image' => 'projects/images/starbucks.png',
+                'video' => null,
+                'client_name' => 'Starbucks',
+            ],
+            [
+                'location' => 'Paskal, Bandung',
+                'year' => '2025',
+                'type' => 'Mechanical, Electrical, HVAC',
+                'scope' => 'Construction',
+                'is_featured' => true, 
+                'sort_order' => 4,
+                'image' => 'projects/images/burgerking.png',
+                'video' => null,
                 'client_name' => 'Burger King',
+            ],
+            [
+                'location' => 'Mall Ciputra, Cibubur',
+                'year' => '2025',
+                'type' => 'Civil, Mechanical, Electrical, HVAC',
+                'scope' => 'Construction',
+                'is_featured' => true, 
+                'sort_order' => 5,
+                'image' => 'projects/images/playnlearn.png',
+                'video' => null,
+                'client_name' => 'Play N Learn',
             ],
             [
                 'location' => 'Pakuwon Mall, Surabaya',
                 'year' => '2024',
-                'scope' => 'Elektrikal & Plumbing',
-                'is_featured' => true, 'sort_order' => 6,
-                'image' => 'projects/subway.png',
+                'type' => 'Electrical, Plumbing',
+                'scope' => 'Construction',
+                'is_featured' => true, 
+                'sort_order' => 6,
+                'image' => 'projects/images/subway.png',
+                'video' => null,
                 'client_name' => 'Subway',
             ],
         ];
@@ -274,7 +376,6 @@ class DatabaseSeeder extends Seeder
             $client = Client::where('name', $clientName)->first();
             Project::create($project + [
                 'client_id' => $client?->id,
-                'video' => null,
                 'is_active' => true,
             ]);
         }
