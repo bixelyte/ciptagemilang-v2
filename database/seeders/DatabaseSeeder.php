@@ -387,7 +387,7 @@ class DatabaseSeeder extends Seeder
             'company_short_name' => ['id' => 'CIPTA GEMILANG', 'en' => 'CIPTA GEMILANG'],
             'company_tagline' => ['id' => 'TEKNIK MANDIRI', 'en' => 'TEKNIK MANDIRI'],
             'company_description' => ['id' => 'Mitra tepercaya dalam Engineering Design, Procurement, dan Construction (EPC) sejak 2006. Berdedikasi menghadirkan solusi mekanikal, elektrikal, dan sipil interior terbaik untuk berbagai fasilitas komersial di seluruh Indonesia.', 'en' => 'Your trusted partner in Engineering Design, Procurement, and Construction (EPC) since 2006. Dedicated to delivering premier mechanical, electrical, and civil interior solutions for commercial facilities across Indonesia.'],
-            'company_address' => ['id' => 'JL. Cendrawasih VI No. 1 Rt.06 Rw.06, Cengkareng Barat, Cengkareng, Jakarta Barat 11730', 'en' => 'JL. Cendrawasih VI No. 1 Rt.06 Rw.06, Cengkareng Barat, Cengkareng, Jakarta Barat 11730'],
+            'company_address' => ['id' => 'JL. Cendrawasih VII No. 11 Rt.06 Rw.06, Cengkareng Barat, Cengkareng, Jakarta Barat 11730', 'en' => 'JL. Cendrawasih VII No. 11 Rt.06 Rw.06, Cengkareng Barat, Cengkareng, Jakarta Barat 11730'],
             'company_phone' => ['id' => '+62 21 5435 3637', 'en' => '+62 21 5435 3637'],
             'company_fax' => ['id' => '+62 21 5435 3637', 'en' => '+62 21 5435 3637'],
             'company_email' => ['id' => 'cgtm@ciptagemilang.net', 'en' => 'cgtm@ciptagemilang.net'],

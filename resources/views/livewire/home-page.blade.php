@@ -198,7 +198,7 @@
         {{-- Left side: Image --}}
         <div class="w-full lg:w-5/12">
             <div class="relative w-full aspect-[3/4] lg:aspect-[4/5] rounded-xl overflow-hidden border-2 border-primary shadow-[0_0_20px_rgba(255,165,0,0.3)]">
-                <img src="{{ asset('images/about_us_building.png') }}" alt="Luxurious Construction and Office Building" class="w-full h-full object-cover" />
+                <img src="{{ asset('images/about_us_building.png') }}?v=2" alt="Luxurious Construction and Office Building" class="w-full h-full object-cover" />
             </div>
         </div>
 
